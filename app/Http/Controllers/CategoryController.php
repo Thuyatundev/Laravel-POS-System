@@ -62,6 +62,11 @@ class CategoryController extends Controller
         return redirect()->route('category#list')->with(['updateSuccess'=> 'Category Updated Successfully']);
     }
 
+    //change password
+    // public function changepassword(){
+    //     return view('admin.change');
+    // }
+
     // category Validation check
     private function categoryValidatorCheck($request)
     {

@@ -8,14 +8,14 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-3 offset-8">
-                        <a href="{{route('category#list')}}"><button class="btn bg-dark text-white my-3"><i class="fa-solid fa-arrow-left"></i> List</button></a>
+                        <a href="{{route('category#list')}}"><button class="btn bg-dark text-white my-3"><i class="fa-solid fa-arrow-left"></i> Back</button></a>
                     </div>
                 </div>
                 <div class="col-lg-6 offset-3">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h3 class="text-center title-2"><i class="fa-solid fa-circle-plus text-success"></i> Edit Your Category</h3>
+                                <h3 class="text-center title-2"><i class="fa-solid fa-pen-to-square"></i> Edit Your Category</h3>
                             </div>
                             <hr>
                             <form action="{{route('category#update')}}" method="POST" novalidate="novalidate">
@@ -31,10 +31,8 @@
                                     @enderror
                                 </div>
                                 <div>
-                                    <button id="payment-button" type="submit" class="btn btn-lg btn-success text-white btn-block">
-                                        <span id="payment-button-amount">Update</span>
-                                        {{-- <span id="payment-button-sending" style="display:none;">Sending…</span> --}}
-                                        <i class="fa-solid fa-circle-right"></i>
+                                    <button id="payment-button" type="submit" class="btn btn-lg btn-warning text-dark btn-block">
+                                        <i class="fa-solid fa-circle-right"></i> <span id="payment-button-amount">Update</span>                                       
                                     </button>
                                 </div>
                             </form>

@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     @if (session('createSuccess'))
-                    <div class="col-3 offset-9">
+                    <div class="col-4 offset-8">
                         <div class="alert alert-success alert-dismissible fade show" role="alert">
                             <i class="fa-sharp fa-solid fa-circle-check"></i> {{session('createSuccess')}}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -37,7 +37,7 @@
                     @endif
 
                     @if (session('deleteSuccess'))
-                    <div class="col-3 offset-9">
+                    <div class="col-4 offset-8">
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
                             <i class="fa-solid fa-circle-xmark"></i> {{session('deleteSuccess')}}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -46,13 +46,15 @@
                     @endif
 
                     @if (session('updateSuccess'))
-                    <div class="col-3 offset-9">
+                    <div class="col-4 offset-8">
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
                             <i class="fa-regular fa-circle-check"></i> {{session('updateSuccess')}}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                           </div>
                     </div>
                     @endif
+
+                   
 
                     <div class="">
                         <h4>Search Key : <span class="text-danger">{{request('key')}}</span></h4>
@@ -91,18 +93,15 @@
                                 <td>
                                     <div class="table-data-feature">
                                        <a href="{{ route('category#edit',$category->id)}}">
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                            <i class="zmdi zmdi-edit"></i>
+                                        <button class="item mr-2" data-toggle="tooltip" data-placement="top" title="Edit">
+                                            <i class="fa-solid fa-pen"></i>
                                         </button>
-                                        </a>
+                                        </a>        
                                         <a href="{{route('category#delete',$category->id)}}">
                                          <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" >
-                                        <i class="zmdi zmdi-delete"></i>
+                                        <i class="fa-solid fa-trash-can"></i>
                                         </button>
                                         </a>
-                                        {{-- <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                                            <i class="zmdi zmdi-more"></i>
-                                        </button> --}}
                                     </div>
                                 </td>
                             </tr>

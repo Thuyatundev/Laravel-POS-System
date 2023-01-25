@@ -50,9 +50,9 @@
             <div class="menu-sidebar__content js-scrollbar1">
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
-                        <li class="active has-sub">
-                            <a class="js-arrow" href="{{route('category#list')}}">
-                                <i class="fa-solid fa-list"></i>Category
+                        <li>
+                            <a class="text-decoration-none" href="{{route('category#list')}}">
+                                <i class="fa-solid fa-bars"></i>Category
                             </a>
                         </li>
                     </ul>
@@ -125,7 +125,7 @@
                                             <img src="{{asset('admin/images/icon/tyt.jpg')}}" alt="Thura" />
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn" href="#">{{Auth::user()->name}}</a>
+                                            <a class="js-acc-btn text-decoration-none">{{Auth::user()->name}}</a>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
@@ -136,15 +136,21 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#">{{Auth::user()->name}}</a>
+                                                        <a href="#" class="text-decoration-none">{{Auth::user()->name}}</a>
                                                     </h5>
                                                     <span class="email">{{Auth::user()->email}}</span>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="#">
-                                                        <i class="zmdi zmdi-account"></i>Account</a>
+                                                    <a href="#" class="text-decoration-none">
+                                                        <i class="fa-solid fa-user"></i>Account</a>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="{{route('adminAccount#changePassword')}}" class="text-decoration-none">
+                                                        <i class="fa-solid fa-key"></i>Change Password</a>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__footer bg-dark">
