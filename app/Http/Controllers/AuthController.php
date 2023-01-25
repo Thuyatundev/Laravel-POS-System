@@ -44,7 +44,7 @@ class AuthController extends Controller
           2. new password and confirm password length must be greather than 6 and less than 10
           3. new password and confirm password must be same
           4. db password and client password must be same
-          5.changed password
+          5. changed password success
         */
         $this->passwordValidationCheck($request);
 
