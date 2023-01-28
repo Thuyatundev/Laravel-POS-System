@@ -89,7 +89,7 @@
                             <tr class="tr-shadow">
                                 <td>{{$category->id}}</td>
                                 <td class="col-6">{{$category->name}}</td>
-                                <td>{{$category->created_at->format('j-F-Y')}}</td>
+                                <td>{{$category->created_at->diffForHumans()}}</td>
                                 <td>
                                     <div class="table-data-feature">
                                        <a href="{{ route('category#edit',$category->id)}}">

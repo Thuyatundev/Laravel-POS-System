@@ -15,9 +15,9 @@ class CategoryController extends Controller
     {
         $categories = Category::when(request('key'), function ($query) {
             $query->where('name', 'like', '%' . request('key') . '%');
-        })->orderBy('id', 'desc')
+        })->orderBy('created_at', 'desc')
             ->paginate(5);
-            $categories->appends(request()->all());
+        $categories->appends(request()->all());
         return view('admin.category.list', compact('categories'));
     }
 
@@ -48,8 +48,8 @@ class CategoryController extends Controller
 
     public function edit($id)
     {
-        $category = Category::where('id',$id)->first();
-        return view('admin.category.edit',compact('category'));
+        $category = Category::where('id', $id)->first();
+        return view('admin.category.edit', compact('category'));
     }
 
     // update category
@@ -58,8 +58,8 @@ class CategoryController extends Controller
     {
         $this->categoryValidatorCheck($request);
         $data = $this->requestCategoryData($request);
-        Category::where('id',$request->categoryId)->update($data);
-        return redirect()->route('category#list')->with(['updateSuccess'=> 'Category Updated Successfully']);
+        Category::where('id', $request->categoryId)->update($data);
+        return redirect()->route('category#list')->with(['updateSuccess' => 'Category Updated Successfully']);
     }
 
     //change password
@@ -71,7 +71,7 @@ class CategoryController extends Controller
     private function categoryValidatorCheck($request)
     {
         Validator::make($request->all(), [
-            'categoryName' => 'required|unique:categories,name,'.$request->categoryId
+            'categoryName' => 'required|unique:categories,name,' . $request->categoryId
         ])->validate();
     }
 
