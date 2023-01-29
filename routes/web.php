@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
             // adminaccountinfo
             Route::get('detail',[AdminController::class,'detail'])->name('adminAccount#detail');
-            
+            Route::get('edit',[AdminController::class,'edit'])->name('adminAccount#edit');
          });
     });
 

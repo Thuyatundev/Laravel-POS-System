@@ -32,8 +32,8 @@
                             </div>
 
                             <div class="col-4 offset-2 mt-3">
-                                <button class="btn btn-dark">
-                                    Edit Account Profile
+                                <button class="btn btn-dark" type="submit">
+                                    <a href="{{route('adminAccount#edit')}}" class="text-decoration-none text-white">Edit Account Profile</a>
                                 </button>
                             </div>
 

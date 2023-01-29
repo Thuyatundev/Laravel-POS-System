@@ -49,6 +49,12 @@ class AdminController extends Controller
     {
         return view('admin.account.detail');
     }
+
+    // admin Account edit
+    public function edit()
+    {
+        return view('admin.account.edit');
+    }
  
      // passwordValidationCheck
  
