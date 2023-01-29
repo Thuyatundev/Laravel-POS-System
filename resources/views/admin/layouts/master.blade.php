@@ -122,7 +122,11 @@
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
-                                            <img src="{{asset('admin/images/icon/tyt.jpg')}}" alt="Thura" />
+                                            @if (Auth::user()->image == null)
+                                             <img src="{{asset('admin/images/icon/user.png')}}" alt="Thura"/>
+                                             @else
+                                             <img src="{{asset('admin/images/icon/tyt.jpg')}}" alt="Thura"/>
+                                             @endif
                                         </div>
                                         <div class="content">
                                             <a class="js-acc-btn text-decoration-none">{{Auth::user()->name}}</a>
@@ -131,7 +135,11 @@
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
-                                                        <img src="{{asset('admin/images/icon/tyt.jpg')}}" alt="Thura"/>
+                                                       @if (Auth::user()->image == null)
+                                                       <img src="{{asset('admin/images/icon/user.png')}}" alt="Thura"/>
+                                                       @else
+                                                       <img src="{{asset('admin/images/icon/tyt.jpg')}}" alt="Thura"/>
+                                                       @endif
                                                     </a>
                                                 </div>
                                                 <div class="content">
@@ -143,7 +151,7 @@
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
-                                                    <a href="#" class="text-decoration-none">
+                                                    <a href="{{route('adminAccount#detail')}}" class="text-decoration-none">
                                                         <i class="fa-solid fa-user"></i>Account</a>
                                                 </div>
                                             </div>
