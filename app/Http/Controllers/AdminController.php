@@ -79,7 +79,7 @@ class AdminController extends Controller
         }
 
         User::where('id', $id)->update($data);
-        return redirect()->route('adminAccount#detail');
+        return redirect()->route('adminAccount#detail')->with(['updateAccount' => 'Account Updated Successfully']);
     }
 
     // userdata

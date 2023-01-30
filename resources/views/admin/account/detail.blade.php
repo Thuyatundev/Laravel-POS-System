@@ -5,6 +5,14 @@
      <!-- MAIN CONTENT-->
      <div class="main-content">
         <div class="section__content section__content--p30">
+            @if (session('updateAccount'))
+            <div class="col-5 offset-6">
+                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                    <i class="fa-regular fa-circle-check"></i> {{session('updateAccount')}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            </div>
+            @endif
             <div class="container-fluid">
                 <div class="col-lg-10 offset-1">
                     <div class="card">
