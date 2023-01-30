@@ -18,13 +18,14 @@
                                     @if (Auth::user()->image == null)
                                     <img src="{{asset('admin/images/icon/user.png')}}" alt="Thura"/>
                                     @else
-                                    <img src="{{asset('admin/images/icon/tyt.jpg')}}" alt="Thura"/>
+                                    <img src="{{asset('storage/'. Auth::user()->image)}}" class="rounded img-thumbnail shadow-sm" alt="Thura"/>
                                     @endif
                                 </div>
                                 <div class="col-5 offset-1">
                                     <h4 class="my-3"><i class="fa-solid fa-user"></i> {{Auth::user()->name}}</h4>
                                     <h4 class="my-3"><i class="fa-solid fa-envelope-circle-check"></i> {{Auth::user()->email}}</h4>
                                     <h4 class="my-3"><i class="fa-solid fa-phone"></i> {{Auth::user()->phone}}</h4>
+                                    <h4 class="my-3"><i class="fa-solid fa-venus-mars"></i> {{Auth::user()->gender}}</h4>
                                     <h4 class="my-3"><i class="fa-solid fa-brain"></i> {{Auth::user()->role}}</h4>
                                     <h4 class="my-3"><i class="fa-solid fa-map-location-dot"></i> {{Auth::user()->address}}</h4>
                                     <h4 class="my-3"><i class="fa-solid fa-user-clock"></i> {{Auth::user()->created_at->diffForHumans()}}</h4>
@@ -33,7 +34,7 @@
 
                             <div class="col-4 offset-2 mt-3">
                                 <button class="btn btn-dark" type="submit">
-                                    <a href="{{route('adminAccount#edit')}}" class="text-decoration-none text-white">Edit Account Profile</a>
+                                    <a href="{{route('adminAccount#edit')}}" class="text-decoration-none text-white"><i class="fa-solid fa-gear"></i> Edit Account Profile</a>
                                 </button>
                             </div>
 

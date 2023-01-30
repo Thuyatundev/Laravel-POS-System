@@ -8,11 +8,15 @@ use App\Http\Controllers\CategoryController;
 use App\Models\Category;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
-// login,register page
+Route::middleware('admin_auth')->group(function(){
+    // login,register page
+        
+    Route::redirect('/', 'loginPage');
+    Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
+    Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
 
-Route::redirect('/', 'loginPage');
-Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
-Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
+});
+
 
 Route::middleware(['auth'])->group(function () {
 
@@ -20,6 +24,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware(['admin_auth'])->group(function () {
+        
 
         // category route
         Route::group(['prefix' => 'Category'], function () {
@@ -40,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
             // adminaccountinfo
             Route::get('detail',[AdminController::class,'detail'])->name('adminAccount#detail');
             Route::get('edit',[AdminController::class,'edit'])->name('adminAccount#edit');
+            Route::post('update/{id}',[AdminController::class,'update'])->name('adminAccount#update');
          });
     });
 

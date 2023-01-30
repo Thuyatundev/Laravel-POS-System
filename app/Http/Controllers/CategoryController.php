@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 
 
+use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -80,7 +82,7 @@ class CategoryController extends Controller
     private function requestCategoryData($request)
     {
         return [
-            'name' => $request->categoryName
+            'name' => $request->categoryName,
         ];
     }
 }
