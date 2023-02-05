@@ -55,6 +55,11 @@
                                 <i class="fa-solid fa-bars"></i>Category
                             </a>
                         </li>
+                        <li>
+                            <a class="text-decoration-none" href="{{route('product#createPage')}}">
+                                <i class="fa-solid fa-pizza-slice"></i>Products
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

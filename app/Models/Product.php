@@ -13,8 +13,9 @@ class Product extends Model
       
         'category_id',
         'name',
-        'destription',
+        'description',
         'image',
+        'waitingtime',
         'price',
         'view_count'
     ];

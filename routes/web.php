@@ -5,7 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Models\Category;
+use App\Models\Product;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
 Route::middleware('admin_auth')->group(function(){
@@ -46,6 +48,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('detail',[AdminController::class,'detail'])->name('adminAccount#detail');
             Route::get('edit',[AdminController::class,'edit'])->name('adminAccount#edit');
             Route::post('update/{id}',[AdminController::class,'update'])->name('adminAccount#update');
+         });
+
+         Route::group(['prefix' => 'product'], function(){
+            // product
+            Route::get('list',[ProductController::class, 'createPage'])->name('product#createPage');
+            Route::get('createPage',[ProductController::class, 'createProduct'])->name('prodcut#createProduct');
+            Route::post('create',[ProductController::class, 'create'])->name('product#create');
+
          });
     });
 
