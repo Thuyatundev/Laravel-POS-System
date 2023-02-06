@@ -8,15 +8,15 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Models\Category;
 use App\Models\Product;
+use GuzzleHttp\Handler\Proxy;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
-Route::middleware('admin_auth')->group(function(){
+Route::middleware('admin_auth')->group(function () {
     // login,register page
-        
+
     Route::redirect('/', 'loginPage');
     Route::get('loginPage', [AuthController::class, 'loginPage'])->name('auth#loginPage');
     Route::get('registerPage', [AuthController::class, 'registerPage'])->name('auth#registerPage');
-
 });
 
 
@@ -26,7 +26,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
 
     Route::middleware(['admin_auth'])->group(function () {
-        
+
 
         // category route
         Route::group(['prefix' => 'Category'], function () {
@@ -38,25 +38,26 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update', [CategoryController::class, 'update'])->name('category#update');
         });
 
-         // admin account
-         Route::group(['prefix' => 'adminAccount'], function () {
+        // admin account
+        Route::group(['prefix' => 'adminAccount'], function () {
             // adminpassword change
             Route::get('changePassword', [AdminController::class, 'changepassword'])->name('adminAccount#changePassword');
-            Route::post('passwordChange',[AdminController::class, 'passwordChange'])->name('adminAccount#passwordChange');
+            Route::post('passwordChange', [AdminController::class, 'passwordChange'])->name('adminAccount#passwordChange');
 
             // adminaccountinfo
-            Route::get('detail',[AdminController::class,'detail'])->name('adminAccount#detail');
-            Route::get('edit',[AdminController::class,'edit'])->name('adminAccount#edit');
-            Route::post('update/{id}',[AdminController::class,'update'])->name('adminAccount#update');
-         });
+            Route::get('detail', [AdminController::class, 'detail'])->name('adminAccount#detail');
+            Route::get('edit', [AdminController::class, 'edit'])->name('adminAccount#edit');
+            Route::post('update/{id}', [AdminController::class, 'update'])->name('adminAccount#update');
+        });
 
-         Route::group(['prefix' => 'product'], function(){
+        Route::group(['prefix' => 'product'], function () {
             // product
-            Route::get('list',[ProductController::class, 'createPage'])->name('product#createPage');
-            Route::get('createPage',[ProductController::class, 'createProduct'])->name('prodcut#createProduct');
-            Route::post('create',[ProductController::class, 'create'])->name('product#create');
-
-         });
+            Route::get('list', [ProductController::class, 'createPage'])->name('product#createPage');
+            Route::get('createPage', [ProductController::class, 'createProduct'])->name('prodcut#createProduct');
+            Route::post('create', [ProductController::class, 'create'])->name('product#create');
+            Route::get('delete/{id}', [ProductController::class, 'delete'])->name('product#delete');
+            Route::get('detail/{id}', [ProductController::class, 'detail'])->name('product#detail');
+        });
     });
 
     //user page

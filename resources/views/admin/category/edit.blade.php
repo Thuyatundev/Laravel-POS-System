@@ -8,7 +8,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-3 offset-8">
-                        <a href="{{route('category#list')}}"><button class="btn bg-dark text-white my-3"><i class="fa-solid fa-arrow-left"></i> Back</button></a>
+                        {{-- <a href="{{route('category#list')}}"></a> --}}
+                        <button class="btn bg-dark text-white my-3" onclick="history.back()"><i class="fa-solid fa-arrow-left"></i> Back</button>
                     </div>
                 </div>
                 <div class="col-lg-6 offset-3">

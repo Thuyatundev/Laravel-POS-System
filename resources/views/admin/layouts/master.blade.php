@@ -57,7 +57,7 @@
                         </li>
                         <li>
                             <a class="text-decoration-none" href="{{route('product#createPage')}}">
-                                <i class="fa-solid fa-pizza-slice"></i>Products
+                                <i class="fa-solid fa-layer-group"></i>Products
                             </a>
                         </li>
                     </ul>

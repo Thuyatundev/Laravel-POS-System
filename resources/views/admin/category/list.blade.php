@@ -98,7 +98,7 @@
                                         </button>
                                         </a>        
                                         <a href="{{route('category#delete',$category->id)}}">
-                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" >
+                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are You Sure?')">
                                         <i class="fa-solid fa-trash-can"></i>
                                         </button>
                                         </a>

@@ -61,7 +61,7 @@
                                 
                                 <div class="form-group">
                                     <label class="control-label mb-1">Waiting Time</label>
-                                    <input id="cc-pament" name="pizzaTime" type="number" class="form-control @error('pizzaTime') is-invalid @enderror" >
+                                    <input id="cc-pament" name="pizzaTime" type="number" value="{{ old('pizzaTime')}}"  class="form-control @error('pizzaTime') is-invalid @enderror" >
                                     @error('pizzaTime')
                                     <div class="invalid-feedback">
                                         {{$message}}
