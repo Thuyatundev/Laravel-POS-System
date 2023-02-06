@@ -15,11 +15,7 @@
             @endif
             <div class="container-fluid">
                 <div class="col-lg-10 offset-1">
-                    <div class="row">
-                        <div class="col-1 offset-11">
-                            <a href="{{route('adminAccount#detail')}}"><button class="btn bg-dark text-white my-3"><i class="fa-solid fa-arrow-left"></i> Back</button></a>
-                        </div>
-                    </div>
+                   
                     <div class="card">
                         
                         <div class="card-body">

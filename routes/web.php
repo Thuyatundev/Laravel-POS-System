@@ -50,8 +50,9 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update/{id}', [AdminController::class, 'update'])->name('adminAccount#update');
         });
 
+        // Product Route
         Route::group(['prefix' => 'product'], function () {
-            // product
+            // products
             Route::get('list', [ProductController::class, 'createPage'])->name('product#createPage');
             Route::get('createPage', [ProductController::class, 'createProduct'])->name('prodcut#createProduct');
             Route::post('create', [ProductController::class, 'create'])->name('product#create');

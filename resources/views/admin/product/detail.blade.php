@@ -36,13 +36,14 @@
                                     <span class="my-3 btn btn-dark text-white"><i class="fa-solid fa-clock"></i> {{$pizzas->waitingtime}} Min</span>
                                     <span class="my-3 btn btn-dark text-white"><i class="fa-regular fa-eye"></i> {{$pizzas->view_count}}</span>
                                     <span class="my-3 btn btn-dark text-white"><i class="fa-solid fa-link"></i> {{$pizzas->category_id}}</span>
-                                    <h4 class="my-3"><i class="fa-solid fa-user-clock"></i> {{$pizzas->description}}</h4>
+                                    <h4 class="my-3 fs-3"><i class="fa-solid fa-address-card"></i></h4>
+                                    <h4 class="my-3">{{$pizzas->description}}</h4>
                                 </div>
                             </div>
 
                             <div class="col-2 offset-1 mt-2">
                                 <button class="btn btn-dark" type="submit">
-                                    <a href="{{route('adminAccount#edit')}}" class="text-decoration-none text-white"><i class="fa-solid fa-gear"></i> Edit Account Profile</a>
+                                    <a href="{{route('adminAccount#edit')}}" class="text-decoration-none text-white"><i class="fa-solid fa-gear"></i> Edit Pizza Product</a>
                                 </button>
                             </div>
 

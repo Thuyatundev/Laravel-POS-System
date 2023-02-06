@@ -39,22 +39,22 @@ class ProductController extends Controller
         $data['image'] = $fileName;
 
         Product::create($data);
-        return redirect()->route('product#createPage')->with(['productcreate'=>'Product Created Successfully...']);
+        return redirect()->route('product#createPage')->with(['productcreate' => 'Product Created Successfully...']);
     }
 
     // product delete
     public function delete($id)
     {
-        Product::where('id',$id)->delete();
-        return redirect()->route('product#createPage')->with(['deletesuccess'=>'Product Delete Successfully...']);
+        Product::where('id', $id)->delete();
+        return redirect()->route('product#createPage')->with(['deletesuccess' => 'Product Delete Successfully...']);
     }
 
     // Product Detail
 
     public function detail($id)
     {
-       $pizzas = Product::where('id',$id)->first();
-        return view('admin.product.detail',compact('pizzas'));
+        $pizzas = Product::where('id', $id)->first();
+        return view('admin.product.detail', compact('pizzas'));
     }
 
     // request product info
