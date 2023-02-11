@@ -47,7 +47,7 @@
 
                     @if (session('Productupdate'))
                     <div class="col-4 offset-8">
-                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <div class="alert alert-info alert-dismissible fade show" role="alert">
                             <i class="fa-regular fa-circle-check"></i> {{session('Productupdate')}}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                           </div>
@@ -88,7 +88,7 @@
                         <tbody>
                             @foreach ($pizzas as $p)
                             <tr class="tr-shadow">
-                                <td class="col-1"><img src="{{asset('storage/'.$p->image)}}" style="width: 200px;height:100px;" class="image-thumbnail shadow-sm" alt="pic"></td>
+                                <td class="col-2"><img src="{{asset('storage/'.$p->image)}}" style="width: 200px;height:100px;" class="image-thumbnail shadow-sm" alt="pic"></td>
                                 <td class="col-3">{{$p->name}}</td>
                                 <td class="col-2">{{$p->price}}</td>
                                 <td class="col-2">{{$p->category_id}}</td>
