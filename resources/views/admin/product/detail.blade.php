@@ -31,22 +31,15 @@
                                     <img src="{{asset('storage/'. $pizzas->image)}}" class="rounded img-thumbnail shadow-sm" >
                                 </div>
                                 <div class="col-7 offset-1">
-                                    <div class="my-3 d-block w-25 btn btn-danger"><i class="fa-solid fa-pizza-slice"></i> {{$pizzas->name}}</div>
+                                    <div class="my-3 d-block w-50 text-center btn btn-danger"><i class="fa-solid fa-pizza-slice"></i> {{$pizzas->name}}</div>
                                     <span class="my-3 btn btn-dark text-white"><i class="fa-solid fa-circle-dollar-to-slot"></i> {{$pizzas->price}} MMK</span>
                                     <span class="my-3 btn btn-dark text-white"><i class="fa-solid fa-clock"></i> {{$pizzas->waitingtime}} Min</span>
                                     <span class="my-3 btn btn-dark text-white"><i class="fa-regular fa-eye"></i> {{$pizzas->view_count}}</span>
                                     <span class="my-3 btn btn-dark text-white"><i class="fa-solid fa-link"></i> {{$pizzas->category_id}}</span>
-                                    <h4 class="my-3 fs-3"><i class="fa-solid fa-address-card"></i></h4>
-                                    <h4 class="my-3">{{$pizzas->description}}</h4>
+                                    <h3 class="my-3 fs-3"><i class="fa-solid fa-address-card"></i> Description</h3>
+                                    <h4 class="my-3 text-muted">{{$pizzas->description}}</h4>
                                 </div>
-                            </div>
-
-                            <div class="col-2 offset-1 mt-2">
-                                <button class="btn btn-dark" type="submit">
-                                    <a href="{{route('adminAccount#edit')}}" class="text-decoration-none text-white"><i class="fa-solid fa-gear"></i> Edit Pizza Product</a>
-                                </button>
-                            </div>
-
+                            </div>  
                         </div>
                     </div>
                 </div> 

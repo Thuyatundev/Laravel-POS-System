@@ -45,10 +45,10 @@
                     </div>
                     @endif
 
-                    @if (session('updateSuccess'))
+                    @if (session('Productupdate'))
                     <div class="col-4 offset-8">
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                            <i class="fa-regular fa-circle-check"></i> {{session('updateSuccess')}}
+                            <i class="fa-regular fa-circle-check"></i> {{session('Productupdate')}}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                           </div>
                     </div>
@@ -79,7 +79,7 @@
                         <thead>
                             <tr>
                                 <th>Picture</th>
-                                <th>Pizza Name</th>
+                                <th>Name</th>
                                 <th>Price</th>
                                 <th>Category</th>
                                 <th>View Count</th>
@@ -100,7 +100,7 @@
                                                 <i class="fa-solid fa-eye"></i>
                                             </button>
                                             </a>   
-                                       <a href="">
+                                       <a href="{{route('product#edit',$p->id)}}">
                                         <button class="item mr-2" data-toggle="tooltip" data-placement="top" title="Edit">
                                             <i class="fa-solid fa-pen"></i>
                                         </button>

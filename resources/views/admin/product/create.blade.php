@@ -33,7 +33,7 @@
                               
 
                                 <div class="form-group">
-                                    <label class="control-label mb-1">Category</label>
+                                    <label class="control-label mb-1">Pizza Category</label>
                                    <select name="pizzaCategory" class="form-control @error('pizzaCategory') is-invalid @enderror ">
                                     <option value="">Choose Your Category</option>
                                     @foreach ($categories as $c)
