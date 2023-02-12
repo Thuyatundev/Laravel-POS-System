@@ -7,11 +7,10 @@
         <div class="section__content section__content--p30">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-2 offset-10">
-                        <a href="{{route('adminAccount#detail')}}"><button class="btn bg-dark text-white my-3"><i class="fa-solid fa-arrow-left"></i> Back</button></a>
-                    </div>
-                </div>
-                <div class="col-lg-10 offset-1">
+                            <div class="col-lg-11 offset-1">
+                                <a href="{{route('adminAccount#detail')}}"><button class="btn bg-dark text-white my-3"><i class="fa-solid fa-arrow-left"></i> Back</button></a>
+                            </div>
+                    <div class="col-lg-10 offset-1">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
@@ -23,7 +22,11 @@
                                 <div class="row">
                                     <div class="col-3 offset-2">
                                         @if (Auth::user()->image == null)
-                                        <img src="{{asset('admin/images/icon/user.png')}}" alt="user"/>
+                                             @if (Auth::user()->gender == 'male')
+                                            <img src="{{asset('admin/images/icon/user.png')}}" style="width: 350px;height:200px;"  class="image-thumbnail shadow-sm" alt="pic">
+                                            @else
+                                            <img src="{{asset('admin/images/icon/female.jpg')}}" style="width: 350px;height:200px;" class="image-thumbnail shadow-sm" alt="pic">
+                                            @endif
                                         @else
                                         <img src="{{asset('storage/'. Auth::user()->image)}}" class="rounded img-thumbnail shadow-sm" alt="Thura"/>
                                         @endif

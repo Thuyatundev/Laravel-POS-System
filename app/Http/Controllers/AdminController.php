@@ -71,7 +71,7 @@ class AdminController extends Controller
             $dbImage = User::where('id', $id)->first();
             $dbImage = $dbImage->image;
             if ($dbImage != null) {
-                Storage::delete('public/'.$dbImage);
+                Storage::delete('public/' . $dbImage);
             }
             $fileName = uniqid() . $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public', $fileName);
@@ -80,6 +80,27 @@ class AdminController extends Controller
 
         User::where('id', $id)->update($data);
         return redirect()->route('adminAccount#detail')->with(['updateAccount' => 'Account Updated Successfully']);
+    }
+
+    // adminlist
+    public function list()
+    {
+        $admin = User::when(request('key'), function ($q) {
+            $q->orWhere('name', 'like', '%' . request('key') . '%')
+                ->orWhere('email', 'like', '%' . request('key') . '%')
+                ->orWhere('gender', 'like', '%' . request('key') . '%')
+                ->orWhere('phone', 'like', '%' . request('key') . '%')
+                ->orWhere('address', 'like', '%' . request('key') . '%');
+        })->where('role', 'admin')->paginate(3);
+        $admin->appends(request()->all());
+        return view('admin.account.list', compact('admin'));
+    }
+
+    // adminlist delete
+    public function delete($id)
+    {
+        User::where('id', $id)->delete();
+        return redirect()->route('adminAccount#list')->with(['deleteSuccess' => 'Account Deleted Successfully...']);
     }
 
     // userdata

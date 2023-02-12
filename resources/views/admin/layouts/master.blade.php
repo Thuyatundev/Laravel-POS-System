@@ -57,7 +57,7 @@
                         </li>
                         <li>
                             <a class="text-decoration-none" href="{{route('product#createPage')}}">
-                                <i class="fa-solid fa-layer-group"></i>Products
+                                <i class="fa-solid fa-utensils"></i> Products
                             </a>
                         </li>
                     </ul>
@@ -128,20 +128,28 @@
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">
                                             @if (Auth::user()->image == null)
-                                             <img src="{{asset('admin/images/icon/user.png')}}" alt="Thura"/>
+                                                @if (Auth::user()->gender == 'male')
+                                                <img src="{{asset('admin/images/icon/user.png')}}" class="image-thumbnail shadow-sm" alt="pic">
+                                                @else
+                                                <img src="{{asset('admin/images/icon/female.jpg')}}" class="image-thumbnail shadow-sm" alt="pic">
+                                                @endif
                                              @else
                                              <img src="{{asset('storage/'. Auth::user()->image)}}" alt="Thura"/>
                                              @endif
                                         </div>
                                         <div class="content">
-                                            <a class="js-acc-btn text-decoration-none">{{Auth::user()->name}}</a>
+                                            <a class="js-acc-btn text-decoration-none">{{Auth::user()->name}}</a> <span class="ms-2"><i class="fa-solid fa-circle text-success"></i></span>
                                         </div>
                                         <div class="account-dropdown js-dropdown">
                                             <div class="info clearfix">
                                                 <div class="image">
                                                     <a href="#">
                                                        @if (Auth::user()->image == null)
-                                                       <img src="{{asset('admin/images/icon/user.png')}}" alt="Thura"/>
+                                                        @if (Auth::user()->gender == 'male')
+                                                        <img src="{{asset('admin/images/icon/user.png')}}" class="image-thumbnail shadow-sm" alt="pic">
+                                                        @else
+                                                        <img src="{{asset('admin/images/icon/female.jpg')}}" class="image-thumbnail shadow-sm" alt="pic">
+                                                        @endif
                                                        @else
                                                        <img src="{{asset('storage/'. Auth::user()->image)}}" alt="Thura"/>
                                                        @endif
@@ -149,15 +157,21 @@
                                                 </div>
                                                 <div class="content">
                                                     <h5 class="name">
-                                                        <a href="#" class="text-decoration-none">{{Auth::user()->name}}</a>
+                                                        <a href="#" class="text-decoration-none">{{Auth::user()->name}}</a> &nbsp;<span><i class="fa-solid fa-circle text-success"></i></span>
                                                     </h5>
-                                                    <span class="email">{{Auth::user()->email}}</span>
+                                                    <span class="email">{{Auth::user()->email}}</span> 
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">
                                                 <div class="account-dropdown__item">
                                                     <a href="{{route('adminAccount#detail')}}" class="text-decoration-none">
                                                         <i class="fa-solid fa-user"></i>Account</a>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="{{route('adminAccount#list')}}" class="text-decoration-none">
+                                                        <i class="fa-solid fa-users"></i>Account List</a>
                                                 </div>
                                             </div>
                                             <div class="account-dropdown__body">

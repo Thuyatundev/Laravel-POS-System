@@ -15,7 +15,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
-                                <h3 class="text-center title-2"><i class="fa-solid fa-user-pen"></i> Product Edit</h3>
+                                <h3 class="text-center title-2"><i class="fa-solid fa-pencil"></i> Product Edit</h3>
                             </div>
                             <hr>
                             <form action="{{route('product#update')}}" method="post" enctype="multipart/form-data">

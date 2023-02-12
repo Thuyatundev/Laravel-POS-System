@@ -48,6 +48,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('detail', [AdminController::class, 'detail'])->name('adminAccount#detail');
             Route::get('edit', [AdminController::class, 'edit'])->name('adminAccount#edit');
             Route::post('update/{id}', [AdminController::class, 'update'])->name('adminAccount#update');
+
+            // adminList 
+            Route::get('list',[AdminController::class,'list'])->name('adminAccount#list');
+            Route::get('delete/{id}',[AdminController::class,'delete'])->name('adminAccount#delete');
         });
 
         // Product Route

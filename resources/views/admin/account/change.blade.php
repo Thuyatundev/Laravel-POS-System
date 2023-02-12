@@ -9,9 +9,6 @@
                 <div class="col-lg-6 offset-3">
                     <div class="card">
                         <div class="card-body">
-                            <div class="card-title">
-                                <h3 class="text-center title-2"><i class="fa-solid fa-unlock text-info"></i> Change Your Password</h3>
-                            </div>
                             @if (session('notMatch'))
                             <div class="col-12">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -22,13 +19,16 @@
                             @endif
 
                             @if (session('changesuccess'))
-                            <div class="col-12">
-                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                            <div class="col-12 py-2">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <i class="fa-regular fa-circle-check"></i> {{session('changesuccess')}}
                                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                   </div>
                             </div>
                             @endif
+                            <div class="card-title">
+                                <h3 class="text-center title-2"><i class="fa-solid fa-unlock text-dark"></i> Change Your Password</h3>
+                            </div>
                             <hr>
                             <form action="{{route('adminAccount#passwordChange')}}" method="post" novalidate="novalidate">
                                 @csrf
@@ -61,7 +61,7 @@
                                 </div>
                                 
                                 <div>
-                                    <button id="payment-button" type="submit" class="btn btn-lg btn-info text-dark btn-block">
+                                    <button id="payment-button" type="submit" class="btn btn-lg btn-dark text-white btn-block">
                                         <i class="fa-solid fa-key"></i>
                                         <span id="payment-button-amount">Change Password</span>                                        
                                     </button>

@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $categories = Category::when(request('key'), function ($query) {
             $query->where('name', 'like', '%' . request('key') . '%');
         })->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(6);
         $categories->appends(request()->all());
         return view('admin.category.list', compact('categories'));
     }

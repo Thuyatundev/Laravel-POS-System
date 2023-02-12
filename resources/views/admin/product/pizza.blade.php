@@ -12,7 +12,7 @@
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
                             <div class="overview-wrap">
-                                <h2 class="title-1 text-dark"><i class="fa-solid fa-database"></i> Product List : <span class="text-danger">{{$pizzas->total()}} </span></h2>
+                                <h2 class="title-1 text-dark"><i class="fa-solid fa-utensils"></i> Product List : <span class="text-danger">{{$pizzas->total()}} </span></h2>
 
                             </div>
                         </div>
@@ -73,7 +73,7 @@
 
                    
 
-                   @if (count($pizzas) != 0)
+                @if (count($pizzas) != 0)
                    <div class="table-responsive table-responsive-data2">
                     <table class="table table-data2 text-center">
                         <thead>
