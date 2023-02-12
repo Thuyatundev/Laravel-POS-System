@@ -35,7 +35,7 @@
                                     <span class="my-3 btn btn-dark text-white"><i class="fa-solid fa-circle-dollar-to-slot"></i> {{$pizzas->price}} MMK</span>
                                     <span class="my-3 btn btn-dark text-white"><i class="fa-solid fa-clock"></i> {{$pizzas->waitingtime}} Min</span>
                                     <span class="my-3 btn btn-dark text-white"><i class="fa-regular fa-eye"></i> {{$pizzas->view_count}}</span>
-                                    <span class="my-3 btn btn-dark text-white"><i class="fa-solid fa-link"></i> {{$pizzas->category_id}}</span>
+                                    <span class="my-3 btn btn-dark text-white"><i class="fa-solid fa-link"></i> {{$pizzas->category_name}}</span>
                                     <h3 class="my-3 fs-3"><i class="fa-solid fa-address-card"></i> Description</h3>
                                     <h4 class="my-3 text-muted">{{$pizzas->description}}</h4>
                                 </div>
