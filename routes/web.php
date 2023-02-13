@@ -50,8 +50,10 @@ Route::middleware(['auth'])->group(function () {
             Route::post('update/{id}', [AdminController::class, 'update'])->name('adminAccount#update');
 
             // adminList 
-            Route::get('list',[AdminController::class,'list'])->name('adminAccount#list');
-            Route::get('delete/{id}',[AdminController::class,'delete'])->name('adminAccount#delete');
+            Route::get('list', [AdminController::class, 'list'])->name('adminAccount#list');
+            Route::get('delete/{id}', [AdminController::class, 'delete'])->name('adminAccount#delete');
+            Route::get('changerole/{id}',[AdminController::class, 'changeRole'])->name('adminAccount#changeRole');
+            Route::post('changerole/{id}',[AdminController::class, 'change'])->name('adminAccount#change');
         });
 
         // Product Route
@@ -62,8 +64,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('create', [ProductController::class, 'create'])->name('product#create');
             Route::get('delete/{id}', [ProductController::class, 'delete'])->name('product#delete');
             Route::get('detail/{id}', [ProductController::class, 'detail'])->name('product#detail');
-            Route::get('edit/{id}',[ProductController::class, 'edit'])->name('product#edit');
-            Route::post('update',[ProductController::class, 'update'])->name('product#update');
+            Route::get('edit/{id}', [ProductController::class, 'edit'])->name('product#edit');
+            Route::post('update', [ProductController::class, 'update'])->name('product#update');
         });
     });
 

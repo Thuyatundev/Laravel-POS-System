@@ -13,6 +13,14 @@
                   </div>
             </div>
             @endif
+            @if (session('changeRole'))
+            <div class="col-5 offset-6">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fa-regular fa-circle-check"></i> {{session('changeRole')}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+            </div>
+            @endif
             <div class="container-fluid">
                 <div class="col-lg-10 offset-1">
                    

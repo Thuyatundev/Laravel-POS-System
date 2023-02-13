@@ -96,6 +96,29 @@ class AdminController extends Controller
         return view('admin.account.list', compact('admin'));
     }
 
+    // admin change role
+    public function changeRole($id)
+    {
+        $account = User::where('id',$id)->first(); 
+        return  view('admin.account.changeRole',compact('account'));
+    }
+
+    // admin change role update
+    public function change($id, Request $request)
+    {
+        $data = $this->UserAccountData($request);
+        User::where('id', $id)->update($data);
+        return redirect()->route('adminAccount#list')->with(['changeRole' =>'Account Role is Changed Successfully...']);
+    }
+
+    // admin change role update data
+    private function UserAccountData($request)
+    {
+        return[
+            'role' =>$request->role 
+        ];
+    }
+
     // adminlist delete
     public function delete($id)
     {
