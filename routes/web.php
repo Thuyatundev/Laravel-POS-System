@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\User\UserController;
 use App\Models\Category;
 use App\Models\Product;
 use GuzzleHttp\Handler\Proxy;
@@ -71,8 +72,10 @@ Route::middleware(['auth'])->group(function () {
 
     //user page
     Route::group(['prefix' => 'User', 'middleware' => 'user_auth'], function () {
-        Route::get('home', function () {
-            return  view('user.home');
-        })->name('user#home');
-    });
+    //     Route::get('home', function () {
+    //         return  view('user.home');
+    //     })->name('user#home');
+
+    Route::get('/userhome',[UserController::class,'homePage'])->name('user#home');
+     });
 });
