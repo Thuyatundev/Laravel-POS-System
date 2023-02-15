@@ -27,13 +27,13 @@
             <!-- Shop Sidebar Start -->
             <div class="col-lg-3 col-md-4">
                 <!-- Price Start -->
-                <h5 class="section-title position-relative text-uppercase mb-3"><span class="bg-secondary pr-3">Pizzas Categories</span></h5>
+                <h5 class="section-title text-uppercase mb-3"><span class="">Pizzas Categories</span></h5>
                 <div class="bg-light p-4 mb-30">
                     <form>
                         <hr class="bg-warning">
                         <div class=" d-flex align-items-center justify-content-between mb-3">
                             <label class="h4" for="price-all">Categories</label>
-                            <span class="badge border font-weight-normal">{{count($category)}}</span>
+                            <span class="badge border font-weight-normal text-dark">{{count($category)}}</span>
                         </div>
                         <hr class="bg-warning">
                         
@@ -59,28 +59,19 @@
                 <div class="row pb-3">
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
-                            {{-- <div>
+                            <div>
                                 <button class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></button>
                                 <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button>
-                            </div> --}}
-                            {{-- <div class="ml-2">
+                            </div>
+                             <div class="ml-2">
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Sorting</button>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">Latest</a>
-                                        <a class="dropdown-item" href="#">Popularity</a>
-                                        <a class="dropdown-item" href="#">Best Rating</a>
+                                        <a class="dropdown-item" href="#">Latest Pizzas</a>
+                                        <a class="dropdown-item" href="#">New Pizzas</a>
                                     </div>
                                 </div>
-                                <div class="btn-group ml-2">
-                                    <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">Showing</button>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="#">10</a>
-                                        <a class="dropdown-item" href="#">20</a>
-                                        <a class="dropdown-item" href="#">30</a>
-                                    </div>
-                                </div>
-                            </div> --}}
+                            </div>
                              </div>
                             </div>
                     

@@ -75,7 +75,20 @@ Route::middleware(['auth'])->group(function () {
     //     Route::get('home', function () {
     //         return  view('user.home');
     //     })->name('user#home');
-
     Route::get('/userhome',[UserController::class,'homePage'])->name('user#home');
      });
+
+    //  user change password
+     Route::prefix('password')->group(function(){
+        Route::get('changepage',[UserController::class, 'changePage'])->name('user#changePage');
+        Route::post('change',[UserController::class, 'change'])->name('user#change');
+     });
+
+    //  user account update
+    Route::prefix('account')->group(function(){
+        Route::get('change',[UserController::class, 'accountChangePage'])->name('user#accountChangePage');
+        Route::get('detail',[UserController::class ,"detail"])->name('user#accountDetail');
+        Route::post('changeAccount/{id}',[UserController::class, 'changeAccount'])->name('user#changeAccount');
+
+    });
 });
