@@ -4,11 +4,12 @@
 @section('content')
      <!-- MAIN CONTENT-->
      <div class="main-content">
+        <div class="section__content section__content--p30">
             <div class="container-fluid">
                             <div class="col-lg-11 offset-1">
                                 <a href="{{route('adminAccount#detail')}}"><button class="btn bg-dark text-white my-3"><i class="fa-solid fa-arrow-left"></i> Back</button></a>
                             </div>
-                    <div class="col-lg-6 offset-3">
+                    <div class="col-lg-10 offset-1">
                     <div class="card">
                         <div class="card-body">
                             <div class="card-title">
@@ -116,6 +117,7 @@
                     </div>
                 
             </div>
+        </div>
     </div>
     <!-- END MAIN CONTENT-->
 @endsection

@@ -18,9 +18,9 @@ class UserController extends Controller
     // user homePage
     public function homePage()
     {
-        $pizza = Product::orderBy('created_at','desc')->get();
+        $pizza = Product::orderBy('created_at', 'desc')->get();
         $category = Category::get();
-        return view('user.main.home',compact('pizza','category'));
+        return view('user.main.home', compact('pizza', 'category'));
     }
 
     // user change page
@@ -35,15 +35,15 @@ class UserController extends Controller
     {
         $this->passwordValidationCheck($request);
 
-        $user = User::select('password')->where('id',Auth::user()->id)->first();
+        $user = User::select('password')->where('id', Auth::user()->id)->first();
         $dbHashValue = $user->password;
 
-        if (Hash::check($request->oldpassword , $dbHashValue)) {
+        if (Hash::check($request->oldpassword, $dbHashValue)) {
             $data = [
                 'password' => Hash::make($request->newpassword)
             ];
-            User::where('id',Auth::user()->id)->update($data);
-            return back()->with(['changesuccess' =>'User password Change Successfully...']);
+            User::where('id', Auth::user()->id)->update($data);
+            return back()->with(['changesuccess' => 'User password Change Successfully...']);
         }
 
         return back()->with(['notMatch' => 'Your old Password is not match. Try again!...']);
@@ -62,7 +62,7 @@ class UserController extends Controller
     }
 
     // user account change
-    public function changeAccount($id,Request $request)
+    public function changeAccount($id, Request $request)
     {
         // uploadimage
         $this->accountValidationCheck($request);
@@ -78,31 +78,32 @@ class UserController extends Controller
             $fileName = uniqid() . $request->file('image')->getClientOriginalName();
             $request->file('image')->storeAs('public', $fileName);
             $data['image'] = $fileName;
+        }
+        User::where('id', $id)->update($data);
+        return redirect()->route('user#accountDetail')->with(['updateAccount' => 'Account Updated Successfully']);
     }
-    User::where('id', $id)->update($data);
-        return redirect()->route('user#accountDetail')->with(['updateAccount' => 'Account Updated Successfully']);}
 
-   
-     // userdata
-     private function getUserData($request)
-     {
-         return [
-             'name' => $request->name,
-             'email' => $request->email,
-             'phone' => $request->phone,
-             'gender' => $request->gender,
-             'address' => $request->address,
-             'updated_at' => Carbon::now()
-         ];
-     }
 
-     // account Validation check
+    // userdata
+    private function getUserData($request)
+    {
+        return [
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'gender' => $request->gender,
+            'address' => $request->address,
+            'updated_at' => Carbon::now()
+        ];
+    }
+
+    // account Validation check
 
     private function accountValidationCheck($request)
     {
         Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required|unique:users,email,'. Auth::user()->id,
+            'email' => 'required|unique:users,email,' . Auth::user()->id,
             'phone' => 'required',
             'gender' => 'required',
             'image' => 'mimes:png,jpg,jpeg|file',
@@ -110,13 +111,13 @@ class UserController extends Controller
         ])->validate();
     }
 
-     // changePassword
-     private function passwordValidationCheck($request)
-     {
-         Validator::make($request->all(),[
-             'oldpassword' => 'required',
-             'newpassword' => 'required|min:6|max:10',
-             'confirmpassword' =>'required|min:6|max:10|same:newpassword'
-         ])->validate();
-     }
+    // changePassword
+    private function passwordValidationCheck($request)
+    {
+        Validator::make($request->all(), [
+            'oldpassword' => 'required',
+            'newpassword' => 'required|min:6|max:10',
+            'confirmpassword' => 'required|min:6|max:10|same:newpassword'
+        ])->validate();
+    }
 }

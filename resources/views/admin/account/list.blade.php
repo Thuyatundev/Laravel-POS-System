@@ -89,23 +89,23 @@
                         <tbody>
                             @foreach ($admin as $a)
                             <tr class="tr-shadow">
-                                <td class="col-2">
+                                <td class="col-lg-2 col-md-3">
                                     @if ( $a->image == null)
                                         @if ($a->gender == 'male')
-                                        <img src="{{asset('admin/images/icon/user.png')}}" style="width: 200px;height:200px;" class="image-thumbnail shadow-sm" alt="pic">
+                                        <img src="{{asset('admin/images/icon/user.png')}}" style="width: 250px;height:200px;"  class="img-thumbnail shadow-sm" alt="pic">
                                         @else
-                                        <img src="{{asset('admin/images/icon/female.jpg')}}" style="width: 200px;height:200px;" class="image-thumbnail shadow-sm" alt="pic">
+                                        <img src="{{asset('admin/images/icon/female.jpg')}}" style="width: 250px;height:200px;"  class="img-thumbnail" alt="pic">
                                         @endif
                                     @else
-                                    <img src="{{asset('storage/'.$a->image)}}" style="width: 200px;height:200px;" class="image-thumbnail shadow-sm" alt="pic">  
+                                    <img src="{{asset('storage/'.$a->image)}}" style="width: 250px;height:200px;"    class="img-thumbnail shadow-sm" alt="pic">  
                                     @endif
                                 </td>
-                                <td class="col-3">{{$a->name}}</td>
-                                <td class="col-2">{{$a->email}}</td>
-                                <td class="col-2">{{$a->phone}}</td>
-                                <td class="col-2">{{$a->gender}}</td>
-                                <td class="col-2">{{$a->address}}</td>
-                                <td>
+                                <td class="col-lg-2 col-md-1">{{$a->name}}</td>
+                                <td class="col-lg-2 col-md-1">{{$a->email}}</td>
+                                <td class="col-lg-2 col-md-1">{{$a->phone}}</td>
+                                <td class="col-lg-2 col-md-1">{{$a->gender}}</td>
+                                <td class="col-lg-2 col-md-1">{{$a->address}}</td>
+                                <td class="col-lg-2 col-md-1">
                                     <div class="table-data-feature">       
                                         @if (Auth::user()->id == $a->id)
                                         <a href="#">

@@ -14,10 +14,9 @@ class ProductController extends Controller
     // product list
     public function createPage()
     {
-        $pizzas = Product::select('products.*','categories.name as category_name')->
-                when(request('key'), function ($query) {
+        $pizzas = Product::select('products.*', 'categories.name as category_name')->when(request('key'), function ($query) {
                 $query->where('products.name', 'like', '%' . request('key') . '%');
-            })->leftJoin('categories','products.category_id','categories.id')
+            })->leftJoin('categories', 'products.category_id', 'categories.id')
             ->orderBy('created_at', 'desc')->paginate(4);
         $pizzas->appends(request()->all());
         return view('admin.product.pizza', compact('pizzas'));
@@ -82,9 +81,9 @@ class ProductController extends Controller
 
     public function detail($id)
     {
-        $pizzas = Product::select('products.*','categories.name as category_name')
-        ->leftJoin('categories','products.category_id','categories.id')
-        ->where('products.id', $id)->first();
+        $pizzas = Product::select('products.*', 'categories.name as category_name')
+            ->leftJoin('categories', 'products.category_id', 'categories.id')
+            ->where('products.id', $id)->first();
         return view('admin.product.detail', compact('pizzas'));
     }
 

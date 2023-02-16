@@ -229,6 +229,8 @@
     <script src="{{asset('admin/js/main.js')}}"></script>
     {{-- bootstrap link --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+   
+    
 </body>
 
 </html>

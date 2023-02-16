@@ -99,8 +99,8 @@ class AdminController extends Controller
     // admin change role
     public function changeRole($id)
     {
-        $account = User::where('id',$id)->first(); 
-        return  view('admin.account.changeRole',compact('account'));
+        $account = User::where('id', $id)->first();
+        return  view('admin.account.changeRole', compact('account'));
     }
 
     // admin change role update
@@ -108,14 +108,14 @@ class AdminController extends Controller
     {
         $data = $this->UserAccountData($request);
         User::where('id', $id)->update($data);
-        return redirect()->route('adminAccount#list')->with(['changeRole' =>'Account Role is Changed Successfully...']);
+        return redirect()->route('adminAccount#list')->with(['changeRole' => 'Account Role is Changed Successfully...']);
     }
 
     // admin change role update data
     private function UserAccountData($request)
     {
-        return[
-            'role' =>$request->role 
+        return [
+            'role' => $request->role
         ];
     }
 
@@ -145,7 +145,7 @@ class AdminController extends Controller
     {
         Validator::make($request->all(), [
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users,email,' . Auth::user()->id,
             'phone' => 'required',
             'gender' => 'required',
             'image' => 'mimes:png,jpg,jpeg|file',

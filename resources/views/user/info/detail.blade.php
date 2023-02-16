@@ -33,12 +33,12 @@
                             <div class="col-3 offset-2">
                                 @if (Auth::user()->image == null)
                                     @if (Auth::user()->gender == 'male')
-                                    <img src="{{asset('admin/images/icon/user.png')}}" class="image-thumbnail shadow-sm" alt="pic">
+                                    <img src="{{asset('admin/images/icon/user.png')}}" style="width: 320px;height:320px;" class="img-thumbnail shadow-sm" alt="pic">
                                     @else
-                                    <img src="{{asset('admin/images/icon/female.jpg')}}" style="width: 300px;height:200px;" class="image-thumbnail shadow-sm" alt="pic">
+                                    <img src="{{asset('admin/images/icon/female.jpg')}}" style="width: 320px;height:320px;" class="img-thumbnail shadow-sm" alt="pic">
                                     @endif
                                 @else
-                                <img src="{{asset('storage/'. Auth::user()->image)}}" class="rounded img-thumbnail shadow-sm" alt="Thura"/>
+                                <img src="{{asset('storage/'. Auth::user()->image)}}" style="width: 320px;height:320px;" class="rounded img-thumbnail shadow-sm" alt="Thura"/>
                                 @endif
                             </div>
                             <div class="col-5 offset-1">

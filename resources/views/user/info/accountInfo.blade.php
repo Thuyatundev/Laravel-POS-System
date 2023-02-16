@@ -29,12 +29,12 @@
                                 <div class="col-lg-6  col-md-6 text-center">
                                     @if (Auth::user()->image == null)
                                          @if (Auth::user()->gender == 'male')
-                                        <img src="{{asset('admin/images/icon/user.png')}}"   class="image-thumbnail shadow-sm" alt="pic">
+                                        <img src="{{asset('admin/images/icon/user.png')}}" style="width: 310px;height:310px;"   class="image-thumbnail shadow-sm" alt="pic">
                                         @else
-                                        <img src="{{asset('admin/images/icon/female.jpg')}}"  class="image-thumbnail shadow-sm" alt="pic">
+                                        <img src="{{asset('admin/images/icon/female.jpg')}}" style="width: 310px;height:310px;"  class="image-thumbnail shadow-sm" alt="pic">
                                         @endif
                                     @else
-                                    <img src="{{asset('storage/'. Auth::user()->image)}}" class="rounded img-thumbnail shadow-sm" alt="Thura"/>
+                                    <img src="{{asset('storage/'. Auth::user()->image)}}" style="width: 310px;height:310px;" class="rounded image-thumbnail shadow-sm" alt="Thura"/>
                                     @endif
                                     <div class="mt-3">
                                         <input type="file" name="image" class="form-control @error('image') is-invalid @enderror"  >
