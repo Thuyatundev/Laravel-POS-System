@@ -77,6 +77,7 @@ Route::middleware(['auth'])->group(function () {
         //         return  view('user.home');
         //     })->name('user#home');
         Route::get('/userhome', [UserController::class, 'homePage'])->name('user#home');
+        Route::get('filder/{id}',[UserController::class, 'filter'])->name('user#filter');
 
 
         //  user change password

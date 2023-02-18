@@ -1,23 +1,3 @@
-{{-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <p>User page</p>
-
-    Role => {{Auth::user()->role}}
-
-    <form action="{{route('logout')}}" method="post">
-        @csrf
-        <input type="submit" value="logout">
-    </form>
-</body>
-</html> --}}
-
 @extends('user.layouts.master')
 
 @section('content')
@@ -37,11 +17,12 @@
                         </div>
                         <hr class="bg-warning">
                         
+                        <div class=" d-flex align-items-center justify-content-between mb-3">
+                            <a href="{{route('user#home')}}" class="text-secondary"> <label class="pb-2" for="price-1">All</label></a>
+                         </div>
                         @foreach ($category as $c)
                         <div class=" d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-1">
-                            <label class="pb-2" for="price-1">{{$c->name}}</label>
-                            {{-- <span class="badge border font-weight-normal">150</span> --}}
+                           <a href="{{route('user#filter',$c->id)}}" class="text-secondary"> <label class="pb-2" for="price-1">{{$c->name}}</label></a>
                         </div>
                         @endforeach
                     </form>
@@ -76,6 +57,7 @@
                          </div>
                     
                         <span class="row" id="dataList">
+                        @if (count($pizza) != 0)
                         @foreach ($pizza as $p)
                         <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
                             <div class="product-item bg-light mb-4">
@@ -95,6 +77,9 @@
                             </div>
                         </div>    
                             @endforeach
+                        @else
+                            <div class="text-center text-dark fs-1 shadow py-5 my-5 col-6 offset-3">There is no pizza here! <i class="fa-solid fa-pizza-slice fs-1 text-danger"></i></div>
+                        @endif
                         </span>
                     </div>
                 </div>
@@ -137,15 +122,12 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>    `;
+                        </div>`;
                             
                         }
                         $('#dataList').html($list); 
-                        
-                     
                     }
-                    
-                })
+                });
             }else if($eventOption =='desc'){
                 $.ajax({
                     type : 'get',
@@ -156,8 +138,7 @@
                         $list = '';
                         for ($i=0; $i<response.length; $i++) {
                             
-                          $list += `
-                          <div class="col-lg-4 col-md-6 col-sm-6 pb-1">
+                          $list += `<div class="col-lg-4 col-md-6 col-sm-6 pb-1">
                             <div class="product-item bg-light mb-4">
                                 <div class="product-img position-relative overflow-hidden">
                                     <img class="img-fluid w-100" style="height: 280px" src="{{asset('storage/${response[$i].image}')}}" alt="">
@@ -173,13 +154,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>    
-                          `;
+                        </div>`;
                         }
                         $('#dataList').html($list);
                     }
-                    // $ 
-                })
+                });
             }
         })
     });

@@ -55,6 +55,15 @@ class UserController extends Controller
         return view('user.info.detail');
     }
 
+    // filter pizza 
+    public function filter($category_id)
+    {
+        $pizza = Product::where('category_id',$category_id)->orderBy('created_at', 'desc')->get();
+        $category = Category::get();
+        return view('user.main.home', compact('pizza', 'category'));
+    }
+
+
     // user account edit
     public function accountChangePage()
     {
