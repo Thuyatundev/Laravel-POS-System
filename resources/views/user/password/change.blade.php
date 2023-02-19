@@ -29,7 +29,7 @@
                                 <h3 class="text-center title-2"><i class="fa-solid fa-unlock text-dark"></i> Change Your Password</h3>
                             </div>
                             <hr>
-                            <form action="{{route('user#change')}}" method="post" novalidate="novalidate">
+                            <form action="{{route('user#change')}}" method="post" novalidate="novalidate" class="p-3">
                                 @csrf
                                 <div class="form-group">
                                     <label class="control-label mb-1">Old Password</label>

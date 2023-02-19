@@ -73,11 +73,14 @@ Route::middleware(['auth'])->group(function () {
 
     //user page
     Route::group(['prefix' => 'User', 'middleware' => 'user_auth'], function () {
-        //     Route::get('home', function () {
-        //         return  view('user.home');
-        //     })->name('user#home');
+    
         Route::get('/userhome', [UserController::class, 'homePage'])->name('user#home');
         Route::get('filder/{id}',[UserController::class, 'filter'])->name('user#filter');
+
+        // pizza dedatil
+        Route::prefix('pizza')->group(function(){
+            Route::get('detail/{id}',[UserController::class,'pizzaDetail'])->name('user#pizzaDetail');
+        });
 
 
         //  user change password

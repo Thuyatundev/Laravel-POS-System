@@ -55,6 +55,14 @@ class UserController extends Controller
         return view('user.info.detail');
     }
 
+    // pizza detial
+    public function pizzaDetail($pizzaId)
+    {
+        $pizzaList = Product::where('id',$pizzaId)->first();
+        $pizzaInfo = Product::get();
+        return view('user.main.details',compact('pizzaList','pizzaInfo'));
+    }
+
     // filter pizza 
     public function filter($category_id)
     {
