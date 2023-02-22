@@ -31,7 +31,9 @@
                         <small class="pt-1">{{$pizzaList->view_count}} <i class="fa-solid fa-eye"></i></small>
                     </div>
                     <h3 class="font-weight-semi-bold mb-4">{{$pizzaList->price}} MMK</h3>
-                    <p class="mb-4">{{$pizzaList->description}}</p>
+                    <p class="mb-4 text-muted">{{$pizzaList->description}}</p>
+                    <input type="hidden" value="{{Auth::user()->id}}" id="userId">
+                    <input type="hidden" value="{{$pizzaList->id}}" id="pizzaId">
                     <div class="d-flex align-items-center mb-4 pt-2">
                         <div class="input-group quantity mr-3" style="width: 130px;">
                             <div class="input-group-btn">
@@ -39,15 +41,14 @@
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div>
-                            <input type="text" class="form-control bg-dark text-white border-0 text-center" value="1">
+                            <input type="text" class="form-control bg-dark text-white border-0 text-center" value="1" id="orderCount">
                             <div class="input-group-btn">
                                 <button class="btn btn-warning btn-plus">
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div>
                         </div>
-                        <button class="btn btn-warning px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To
-                            Cart</button>
+                        <button type="button" class="btn btn-warning px-3" id="addCartBtn"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
                     </div>
                     <div class="d-flex pt-2">
                         <strong class="text-dark mr-2">Share on:</strong>
@@ -78,7 +79,7 @@
                     <div class="tab-content">
                         <div class="tab-pane fade show active" id="tab-pane-1">
                             <h4 class="mb-3">{{$pizzaList->name}}</h4>
-                            <p>{{$pizzaList->description}}</p>
+                            <p class="text-muted">{{$pizzaList->description}}</p>
                             
                         </div>
                     </div>
@@ -125,5 +126,30 @@
         </div>
     </div>
     <!-- Products End -->
+@endsection
 
+@section('scriptSource')
+    <script>
+        $(document).ready(function () {
+            $('#addCartBtn').click(function(){
+                $source = {
+                    'userId' : $('#userId').val(),
+                    'pizzaId' : $('#pizzaId').val(),
+                    'count' : $('#orderCount').val()
+                };
+
+                $.ajax({
+                    type : 'get',
+                    url: 'http://127.0.0.1:8000/User/ajax/addToCart',
+                    data: $source,
+                    dataType:'json',
+                    success:function(response){
+                        if (response.status == 'success') {
+                            window.location.href = 'http://127.0.0.1:8000/User/userhome';
+                        }
+                    }
+                });
+            })
+        })
+    </script>
 @endsection

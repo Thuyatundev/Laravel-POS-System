@@ -78,34 +78,33 @@
                         <thead>
                             <tr>
                                 <th>Image</th>
-                                <th>Name</th>
-                                <th>Email</th>
+                                <th >Email</th>
+                                <th >Name</th>
                                 <th>Phone</th>
                                 <th>Gender</th>
                                 <th>Address</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($admin as $a)
                             <tr class="tr-shadow">
-                                <td class="col-lg-2 col-md-3">
+                                <td class="col-2 px-3">
                                     @if ( $a->image == null)
                                         @if ($a->gender == 'male')
-                                        <img src="{{asset('admin/images/icon/user.png')}}" style="width: 250px;height:200px;"  class="img-thumbnail shadow-sm" alt="pic">
+                                        <img src="{{asset('admin/images/icon/user.png')}}" style="width: 250px;height:170px;"  class="img-thumbnail shadow-sm" alt="pic">
                                         @else
-                                        <img src="{{asset('admin/images/icon/female.jpg')}}" style="width: 250px;height:200px;"  class="img-thumbnail" alt="pic">
+                                        <img src="{{asset('admin/images/icon/female.jpg')}}" style="width: 250px;height:170px;"  class="img-thumbnail" alt="pic">
                                         @endif
                                     @else
-                                    <img src="{{asset('storage/'.$a->image)}}" style="width: 250px;height:200px;"    class="img-thumbnail shadow-sm" alt="pic">  
+                                    <img src="{{asset('storage/'.$a->image)}}" style="width: 250px;height:170px;"    class="img-thumbnail shadow-sm" alt="pic">  
                                     @endif
                                 </td>
-                                <td class="col-lg-2 col-md-1">{{$a->name}}</td>
-                                <td class="col-lg-2 col-md-1">{{$a->email}}</td>
-                                <td class="col-lg-2 col-md-1">{{$a->phone}}</td>
-                                <td class="col-lg-2 col-md-1">{{$a->gender}}</td>
-                                <td class="col-lg-2 col-md-1">{{$a->address}}</td>
-                                <td class="col-lg-2 col-md-1">
+                                <td class="col-1">{{$a->email}}</td>
+                                <td class="col-1">{{$a->name}}</td>
+                                <td class="col-1">{{$a->phone}}</td>
+                                <td class="col-1">{{$a->gender}}</td>
+                                <td class="col-1">{{$a->address}}</td>
+                                <td class="col-1">
                                     <div class="table-data-feature">       
                                         @if (Auth::user()->id == $a->id)
                                         <a href="#">
@@ -115,7 +114,7 @@
                                            </a>   
                                         @else
                                         <a href="{{route('adminAccount#changeRole', $a->id)}}">
-                                            <button class="item me-2" data-toggle="tooltip" data-placement="top" title="Change Account Role">
+                                            <button class="item me-1" data-toggle="tooltip" data-placement="top" title="Change Account Role">
                                                 <i class="fa-solid fa-person-circle-minus"></i>
                                            </button>
                                         </a>

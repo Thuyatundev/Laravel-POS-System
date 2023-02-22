@@ -98,7 +98,8 @@ Route::middleware(['auth'])->group(function () {
 
         // ajax pizza list
         Route::prefix('ajax')->group(function(){
-            Route::get('pizza/list',[ajaxController::class, 'pizzaList'])->name('ajax#pizzaList');
+            Route::get('pizza',[ajaxController::class, 'pizzaList'])->name('ajax#pizzaList');
+            Route::get('addToCart',[ajaxController::class,'addToCart'])->name('ajax#addToCart');
         });
     });
 });
