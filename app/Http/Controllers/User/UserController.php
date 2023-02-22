@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use Carbon\Carbon;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
@@ -20,7 +21,8 @@ class UserController extends Controller
     {
         $pizza = Product::orderBy('created_at', 'desc')->get();
         $category = Category::get();
-        return view('user.main.home', compact('pizza', 'category'));
+        $cart = Cart::where('user_id',Auth::user()->id)->get();
+        return view('user.main.home', compact('pizza', 'category','cart'));
     }
 
     // user change page

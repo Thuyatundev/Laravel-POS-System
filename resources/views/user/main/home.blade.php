@@ -41,9 +41,14 @@
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div>
-                                <button class="btn btn-sm btn-light"><i class="fa fa-th-large"></i></button>
-                                <button class="btn btn-sm btn-light ml-2"><i class="fa fa-bars"></i></button>
-                        </div>
+                               <a href="{{route('cart#pizzaCart')}}">
+                                <button type="button" class="btn btn-dark position-relative"><i class="fa-solid fa-cart-plus text-white fs-4"></i>
+                                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                      {{count($cart)}}
+                                    </span>
+                                  </button>
+                                </a>
+                            </div>
                             <div class="ml-2">
                                 <div class="btn-group">
                                     <select name="sorting" id="sortingOption" class="form-control">
@@ -64,7 +69,7 @@
                                 <div class="product-img position-relative overflow-hidden">
                                     <img class="img-fluid w-100" style="height: 280px" src="{{asset('storage/'. $p->image)}}" alt="">
                                      <div class="product-action">
-                                        <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-shopping-cart"></i></a>
+                                        <a class="btn btn-outline-dark btn-square" href="{{route('cart#pizzaCart')}}"><i class="fa fa-shopping-cart"></i></a>
                                         <a class="btn btn-outline-dark btn-square" href="{{route('user#pizzaDetail', $p->id)}}"><i class="fa-solid fa-circle-info"></i></a>
                                     </div> 
                                 </div>

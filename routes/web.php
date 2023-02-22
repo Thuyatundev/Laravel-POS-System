@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\ajaxController;
@@ -77,9 +78,14 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/userhome', [UserController::class, 'homePage'])->name('user#home');
         Route::get('filder/{id}',[UserController::class, 'filter'])->name('user#filter');
 
-        // pizza dedatil
+        // pizza detail
         Route::prefix('pizza')->group(function(){
             Route::get('detail/{id}',[UserController::class,'pizzaDetail'])->name('user#pizzaDetail');
+        });
+
+        // cart
+        Route::prefix('cart')->group(function(){
+            Route::get('pizzaCart',[CartController::class,'pizzaCart'])->name('cart#pizzaCart');
         });
 
 
