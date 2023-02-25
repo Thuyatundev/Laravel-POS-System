@@ -10,6 +10,7 @@
                 <h5 class="section-title text-uppercase mb-3"><span class="">Pizzas Categories</span></h5>
                 <div class="bg-light p-4 mb-30">
                     <form>
+                        @csrf
                         <hr class="bg-warning">
                         <div class=" d-flex align-items-center justify-content-between mb-3">
                             <label class="h4" for="price-all">Categories</label>
@@ -100,11 +101,11 @@
         $('#sortingOption').change(function(){
             $eventOption = $('#sortingOption').val();
 
-            if ($eventOption == 'asc') {
+            if ($eventOption == 'desc') {
                 $.ajax({
                     type : 'get',
                     url  : 'http://localhost:8000/User/ajax/pizza',
-                    data : {'status' : 'asc'},
+                    data : {'status' : 'desc'},
                     dataType : 'json',
                     success : function(response){
                         $list = '';
@@ -133,11 +134,11 @@
                         $('#dataList').html($list); 
                     }
                 });
-            }else if($eventOption =='desc'){
+            }else if($eventOption =='asc'){
                 $.ajax({
                     type : 'get',
                     url  : 'http://localhost:8000/User/ajax/pizza',
-                    data : {'status' : 'desc'},
+                    data : {'status' : 'asc'},
                     dataType : 'json',
                     success : function(response){
                         $list = '';

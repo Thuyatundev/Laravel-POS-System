@@ -12,7 +12,6 @@ class ajaxController extends Controller
     // pizza list
     public function pizzaList(Request $request)
     {
-        logger($request->all());
         if ($request->status == 'asc') {
             $pizza = Product::orderBy('created_at', 'asc')->get();
         } else if($request->status == 'desc'){
