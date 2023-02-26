@@ -7,9 +7,9 @@
             <div class="row">
                 <div class="col-lg-6 offset-3">
                 <div class="card">
-                    <div class="card-body bg-dark text-warning">
+                    <div class="card-body bg-dark text-white">
                         <div class="card-title">
-                            <a href="{{route('user#accountDetail')}}" class="text-decoration-none text-warning"><i class="fa-solid fa-arrow-left"></i> </a>
+                            <a href="{{route('user#accountDetail')}}" class="text-decoration-none text-white"><i class="fa-solid fa-arrow-left"></i> </a>
                             <h3 class="text-center title-2"><i class="fa-solid fa-user-pen"></i> User Account Edit</h3>
                         </div>
 
@@ -45,7 +45,7 @@
                                         @enderror
                                     </div>
                                     <div class="mt-3">
-                                        <button class="text-dark btn btn-warning col-12">
+                                        <button class="text-dark btn btn-light col-12">
                                             Update <i class="fa-solid fa-circle-chevron-right"></i>
                                         </button>
                                     </div>

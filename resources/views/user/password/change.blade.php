@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="col-6 offset-3">
                     <div class="card">
-                        <div class="card-body bg-dark text-warning">
+                        <div class="card-body bg-dark text-white">
                             @if (session('notMatch'))
                             <div class="col-12">
                                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -59,8 +59,8 @@
                                     @enderror
                                 </div>
                                 
-                                <div>
-                                    <button id="payment-button" type="submit" class="btn btn-lg btn-warning text-dark btn-block">
+                                <div class="pt-3">
+                                    <button id="payment-button" type="submit" class="btn btn-lg btn-light text-dark btn-block col-6 offset-3">
                                         <i class="fa-solid fa-key"></i>
                                         <span id="payment-button-amount">Change Password</span>                                        
                                     </button>

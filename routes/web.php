@@ -74,18 +74,20 @@ Route::middleware(['auth'])->group(function () {
 
     //user page
     Route::group(['prefix' => 'User', 'middleware' => 'user_auth'], function () {
-    
+
         Route::get('/userhome', [UserController::class, 'homePage'])->name('user#home');
-        Route::get('filder/{id}',[UserController::class, 'filter'])->name('user#filter');
+        Route::get('filder/{id}', [UserController::class, 'filter'])->name('user#filter');
+
+      
 
         // pizza detail
-        Route::prefix('pizza')->group(function(){
-            Route::get('detail/{id}',[UserController::class,'pizzaDetail'])->name('user#pizzaDetail');
+        Route::prefix('pizza')->group(function () {
+            Route::get('detail/{id}', [UserController::class, 'pizzaDetail'])->name('user#pizzaDetail');
         });
 
         // cart
-        Route::prefix('cart')->group(function(){
-            Route::get('pizzaCart',[CartController::class,'pizzaCart'])->name('cart#pizzaCart');
+        Route::prefix('cart')->group(function () {
+            Route::get('pizzaCart', [CartController::class, 'pizzaCart'])->name('cart#pizzaCart');
         });
 
 
@@ -101,11 +103,10 @@ Route::middleware(['auth'])->group(function () {
             Route::get('detail', [UserController::class, "detail"])->name('user#accountDetail');
             Route::post('changeAccount/{id}', [UserController::class, 'changeAccount'])->name('user#changeAccount');
         });
-
-        // ajax pizza list
-        Route::prefix('ajax')->group(function(){
-            Route::get('pizza',[ajaxController::class, 'pizzaList'])->name('ajax#pizzaList');
-            Route::get('addToCart',[ajaxController::class,'addToCart'])->name('ajax#addToCart');
+          // ajax pizza list
+          Route::prefix('ajax')->group(function () {
+            Route::get('pizza', [ajaxController::class, 'pizzaList'])->name('ajax#pizzaList');
+            Route::get('addToCart', [ajaxController::class, 'addToCart'])->name('ajax#addToCart');
         });
     });
 });

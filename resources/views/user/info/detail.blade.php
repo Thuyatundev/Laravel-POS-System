@@ -24,7 +24,7 @@
                
                 <div class="card">
                     
-                    <div class="card-body bg-dark text-warning">
+                    <div class="card-body bg-dark text-white">
                         <div class="card-title">
                             <h3 class="text-center title-2"><i class="fa-solid fa-circle-user"></i> User Account Info</h3>
                         </div>
@@ -53,7 +53,7 @@
                         </div>
 
                         <div class="col-4 offset-2 mt-3">
-                            <button class="btn btn-warning " type="submit">
+                            <button class="btn btn-light " type="submit">
                                 <a href="{{route('user#accountChangePage')}}" class="text-decoration-none text-dark"><i class="fa-solid fa-gear"></i> Edit Account Profile</a>
                             </button>
                         </div>

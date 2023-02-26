@@ -11,7 +11,7 @@ class CartController extends Controller
     //addCart
     public function pizzaCart()
     {
-        $cartList = Cart::select('carts.*','products.name as pizzaName', 'products.price  as pizzaPrice')
+        $cartList = Cart::select('carts.*','products.name as pizzaName', 'products.price  as pizzaPrice','products.image as pizzaImage')
                     ->leftJoin('products','products.id','carts.product_id')
                     ->where('carts.user_id',Auth::user()->id)
                     ->get();

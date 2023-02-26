@@ -53,16 +53,16 @@
                     <div class="d-flex pt-2">
                         <strong class="text-dark mr-2">Share on:</strong>
                         <div class="d-inline-flex">
-                            <a class="text-dark px-2" href="">
+                            <a class="text-white rounded bg-primary px-2" href="https://facebook.com">
                                 <i class="fab fa-facebook-f"></i>
                             </a>
-                            <a class="text-dark px-2" href="">
+                            <a class="text-primary px-2" href="https://twitter.com/i/flow/single_sign_on">
                                 <i class="fab fa-twitter"></i>
                             </a>
-                            <a class="text-dark px-2" href="">
+                            <a class="text-white rounded bg-primary px-2" href="https://www.linkedin.com/">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
-                            <a class="text-dark px-2" href="">
+                            <a class="text-danger px-3" href="https:pinterest.com">
                                 <i class="fab fa-pinterest"></i>
                             </a>
                         </div>
