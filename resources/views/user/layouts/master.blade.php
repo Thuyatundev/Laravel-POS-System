@@ -9,7 +9,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    {{-- <link href="img/favicon.ico" rel="icon"> --}}
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -149,7 +149,7 @@
                 </p>
             </div>
             <div class="col-md-6 px-xl-0 text-center text-md-right">
-                {{-- <img class="img-fluid" src="img/payments.png" alt=""> --}}
+                <img class="img-fluid" src="{{asset('user/img/payments.png')}}" alt="">
             </div>
         </div>
     </div>

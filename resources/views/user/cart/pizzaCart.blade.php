@@ -9,6 +9,7 @@
             <a href="{{route('user#home')}}" class="text-decoration-none text-dark my-3">
                 <i class="fa-solid fa-arrow-left-long "></i> back
             </a>
+           
             <div class="col-lg-8 table-responsive mb-5">
                 <table class="table table-light table-borderless table-hover text-center mb-0" id="dataTable">
                     <thead class="thead-dark">
@@ -22,12 +23,12 @@
                         </tr>
                     </thead>
                     <tbody class="align-middle">
-                        @foreach ($cartList as $cart)
+                        @foreach ($cartList as $c)
                         <tr>
-                            {{-- <input type="hidden" id="price" value="{{$cart->pizzaPrice}}"> --}}
-                            <td><img src="{{asset('storage/'. $cart->pizzaImage)}}" alt="" style="width: 100px;height:70px;"></td>
-                            <td class="align-middle">{{$cart->pizzaName}}</td>
-                            <td class="align-middle" id="price">{{$cart->pizzaPrice}} MMK</td>
+                            {{-- <input type="hidden" id="price" value="{{$c->pizzaPrice}}"> --}}
+                            <td><img src="{{asset('storage/'. $c->pizzaImage)}}" alt="" style="width: 100px;height:70px;" class="img-thumbnail"></td>
+                            <td class="align-middle">{{$c->pizzaName}}</td>
+                            <td class="align-middle" id="price">{{$c->pizzaPrice}} MMK</td>
                             
                             <td class="align-middle">
                                 <div class="input-group quantity mx-auto" style="width: 100px;">
@@ -37,7 +38,7 @@
                                         </button>
                                     </div>
                                    
-                                    <input type="text" class="form-control form-control-sm bg-danger border-0 text-white text-center" value="{{$cart->qty}}" id="qty">
+                                    <input type="text" class="form-control form-control-sm bg-danger border-0 text-white text-center" value="{{$c->qty}}" id="qty">
                                     <div class="input-group-btn">
                                         <button class="btn btn-sm btn-dark btn-plus">
                                             <i class="fa fa-plus"></i>
@@ -45,7 +46,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td class="align-middle col-3" id="total">{{$cart->pizzaPrice*$cart->qty}} MMK</td>
+                            <td class="align-middle col-3" id="total">{{$c->pizzaPrice*$c->qty}} MMK</td>
                             <td class="align-middle"><button class="btn btn-sm btn-danger btnRemove"><i class="fa fa-times"></i></button></td>
                         </tr>
                         @endforeach

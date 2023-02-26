@@ -21,8 +21,9 @@ class UserController extends Controller
     {
         $pizza = Product::orderBy('created_at', 'desc')->get();
         $category = Category::get();
-        $cart = Cart::where('user_id',Auth::user()->id)->get();
-        return view('user.main.home', compact('pizza', 'category','cart'));
+        $cartdetail = Cart::where('user_id', Auth::user()->id)->get();
+
+        return view('user.main.home', compact('pizza', 'category', 'cartdetail'));
     }
 
     // user change page
@@ -60,19 +61,34 @@ class UserController extends Controller
     // pizza detial
     public function pizzaDetail($pizzaId)
     {
-        $pizzaList = Product::where('id',$pizzaId)->first();
+        $pizzaList = Product::where('id', $pizzaId)->first();
         $pizzaInfo = Product::get();
-        return view('user.main.details',compact('pizzaList','pizzaInfo'));
+        return view('user.main.details', compact('pizzaList', 'pizzaInfo'));
     }
 
     // filter pizza 
     public function filter($category_id)
     {
-        $pizza = Product::where('category_id',$category_id)->orderBy('created_at', 'desc')->get();
+        $pizza = Product::where('category_id', $category_id)->orderBy('created_at', 'desc')->get();
         $category = Category::get();
-        return view('user.main.home', compact('pizza', 'category'));
+        $cartdetail = Cart::where('user_id', Auth::user()->id)->get();
+        return view('user.main.home', compact('pizza', 'category','cartdetail'));
     }
 
+    //addCart
+    public function pizzaCart()
+    {
+        $cartList = Cart::select('carts.*', 'products.name as pizzaName', 'products.price  as pizzaPrice', 'products.image as pizzaImage')
+            ->leftJoin('products', 'products.id', 'carts.product_id')
+            ->where('carts.user_id', Auth::user()->id)
+            ->get();
+        $totalPrice = 0;
+
+        foreach ($cartList as $c) {
+            $totalPrice += $c->pizzaPrice * $c->qty;
+        }
+        return view('user.cart.pizzaCart', compact('cartList', 'totalPrice'));
+    }
 
     // user account edit
     public function accountChangePage()

@@ -45,7 +45,7 @@
                                <a href="{{route('cart#pizzaCart')}}">
                                 <button type="button" class="btn btn-dark position-relative"><i class="fa-solid fa-cart-plus text-white fs-4"> </i>
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                      {{count($cart)}}
+                                   {{count($cartdetail)}} 
                                     </span>
                                   </button>
                                 </a>

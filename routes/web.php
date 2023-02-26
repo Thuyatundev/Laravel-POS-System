@@ -87,7 +87,7 @@ Route::middleware(['auth'])->group(function () {
 
         // cart
         Route::prefix('cart')->group(function () {
-            Route::get('pizzaCart', [CartController::class, 'pizzaCart'])->name('cart#pizzaCart');
+            Route::get('pizzaCart', [UserController::class, 'pizzaCart'])->name('cart#pizzaCart');
         });
 
 
