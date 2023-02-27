@@ -13,6 +13,7 @@ use App\Models\Category;
 use App\Models\Product;
 use GuzzleHttp\Handler\Proxy;
 use PHPUnit\TextUI\XmlConfiguration\Group;
+use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
 Route::middleware('admin_auth')->group(function () {
     // login,register page
@@ -107,6 +108,7 @@ Route::middleware(['auth'])->group(function () {
           Route::prefix('ajax')->group(function () {
             Route::get('pizza', [ajaxController::class, 'pizzaList'])->name('ajax#pizzaList');
             Route::get('addToCart', [ajaxController::class, 'addToCart'])->name('ajax#addToCart');
+            Route::get('order',[ajaxController::class,'order'])->name('ajax#order');
         });
     });
 });

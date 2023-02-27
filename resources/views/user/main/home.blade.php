@@ -19,7 +19,7 @@
                         <hr class="bg-warning">
                         
                         <div class=" d-flex align-items-center justify-content-between mb-3">
-                            <a href="{{route('user#home')}}" class="text-secondary"> <label class="pb-2" for="price-1">All</label></a>
+                            <a href="{{route('user#home')}}" class="text-danger"> <label class="pb-2" for="price-1">All</label></a>
                          </div>
                         @foreach ($category as $c)
                         <div class=" d-flex align-items-center justify-content-between mb-3">

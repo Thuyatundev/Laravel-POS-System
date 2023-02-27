@@ -37,18 +37,18 @@
                     <div class="d-flex align-items-center mb-4 pt-2">
                         <div class="input-group quantity mr-3" style="width: 130px;">
                             <div class="input-group-btn">
-                                <button class="btn btn-warning btn-minus">
+                                <button class="btn btn-danger btn-minus">
                                     <i class="fa fa-minus"></i>
                                 </button>
                             </div>
                             <input type="text" class="form-control bg-dark text-white border-0 text-center" value="1" id="orderCount">
                             <div class="input-group-btn">
-                                <button class="btn btn-warning btn-plus">
+                                <button class="btn btn-danger btn-plus">
                                     <i class="fa fa-plus"></i>
                                 </button>
                             </div>
                         </div>
-                        <button type="button" class="btn btn-warning px-3" id="addCartBtn"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                        <button type="button" class="btn btn-danger px-3" id="addCartBtn"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
                     </div>
                     <div class="d-flex pt-2">
                         <strong class="text-dark mr-2">Share on:</strong>
@@ -111,11 +111,11 @@
                                 <h5>{{$item->price}}</h5>
                             </div>
                             <div class="d-flex align-items-center justify-content-center mb-1">
-                                <small class="fa fa-star text-warning mr-1"></small>
-                                <small class="fa fa-star text-warning mr-1"></small>
-                                <small class="fa fa-star text-warning mr-1"></small>
-                                <small class="fa fa-star text-warning mr-1"></small>
-                                <small class="fa fa-star text-warning mr-1"></small>
+                                <small class="fa fa-star text-danger mr-1"></small>
+                                <small class="fa fa-star text-danger mr-1"></small>
+                                <small class="fa fa-star text-danger mr-1"></small>
+                                <small class="fa fa-star text-danger mr-1"></small>
+                                <small class="fa fa-star text-danger mr-1"></small>
                                 <small>(99)</small>
                             </div>
                         </div>

@@ -27,7 +27,11 @@
                         <tr>
                             {{-- <input type="hidden" id="price" value="{{$c->pizzaPrice}}"> --}}
                             <td><img src="{{asset('storage/'. $c->pizzaImage)}}" alt="" style="width: 100px;height:70px;" class="img-thumbnail"></td>
-                            <td class="align-middle">{{$c->pizzaName}}</td>
+                            <td class="align-middle">
+                                {{$c->pizzaName}}
+                                <input type="hidden" class="productId" value="{{$c->product_id}}">
+                                <input type="hidden" class="userId" value="{{$c->user_id}}">
+                            </td>
                             <td class="align-middle" id="price">{{$c->pizzaPrice}} MMK</td>
                             
                             <td class="align-middle">
@@ -71,7 +75,7 @@
                             <h5>Total Amount <i class="fa-solid fa-sack-dollar"></i></h5>
                             <h5 class="text-danger" id="finalPrice">{{$totalPrice+2500}} MMK</h5>
                         </div>
-                        <button class="btn btn-block btn-dark font-weight-bold my-3 py-3">Proceed To Checkout</button>
+                        <button class="btn btn-block btn-dark font-weight-bold my-3 py-3" id="btnPlus">Proceed To Checkout</button>
                     </div>
                 </div>
             </div>
@@ -119,7 +123,7 @@
                 function summaryCalculation()
                 {
                     $totalPrice = 0;
-                    $('#dataTable tr').each(function(index,row){
+                    $('#dataTable tbody tr').each(function(index,row){
                         $totalPrice += Number($(row).find('#total').text().replace("MMK", ""));
                     });
 
@@ -127,6 +131,42 @@
                     $("#finalPrice").html(`${$totalPrice + 2500} MMK`);
                 }
             });
+
+            // Proceed to checkout
+            $("#btnPlus").click(function(){
+    
+                    $orderList = [];
+
+                    $random = Math.floor(Math.random() * 10000001);
+
+                   
+
+                    $('#dataTable tbody tr').each(function(index,row){
+                        $orderList.push({
+                            'user_id' : $(row).find('.userId').val(),
+                            'product_id' : $(row).find('.productId').val(),
+                            'qty' : $(row).find('#qty').val(),
+                            'total' : $(row).find('#total').text().replace("MMK","")*1,
+                            'order_code' : 'POS'+ $random + 'CODE'
+                        });
+                    });
+         
+
+            $.ajax({
+                    type : 'get',
+                    url  :  'http://localhost:8000/User/ajax/order',
+                    data :  Object.assign({}, $orderList),
+                    dataType : 'json',
+                    success : function(response){
+                        if (response.status == 'true') {
+                            window.location.href = 'http://127.0.0.1:8000/User/userhome';
+                        }
+                    }
+
+
+
+            });
+        });
             
         </script>
 @endsection

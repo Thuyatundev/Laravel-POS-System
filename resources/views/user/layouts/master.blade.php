@@ -45,7 +45,7 @@
                     </button>
                     <div class="collapse navbar-collapse justify-content-between bg-danger" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="{{route('user#home')}}" class="nav-item nav-link ">Home</a>
+                            <a href="{{route('user#home')}}" class="nav-item nav-link fs-4">Home</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
                             {{-- <a href="" class="btn px-0">
