@@ -68,6 +68,21 @@ class ajaxController extends Controller
         ],200);
     }
 
+    // clear cart
+    public function clear()
+    {
+        Cart::where('user_id',Auth::user()->id)->delete();
+    }
+
+    // crossbtn
+    public function crossbtn(Request $request)
+    {
+        Cart::where('user_id',Auth::user()->id)
+            ->where('product_id',$request->productId)
+            ->where('id',$request->orderId)
+            ->delete();
+    }
+
     // getOrderData
     private function getOrderData($request)
     {

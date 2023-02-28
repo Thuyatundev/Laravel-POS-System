@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Carbon\Carbon;
 use App\Models\Cart;
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -22,8 +23,9 @@ class UserController extends Controller
         $pizza = Product::orderBy('created_at', 'desc')->get();
         $category = Category::get();
         $cartdetail = Cart::where('user_id', Auth::user()->id)->get();
+        $history = Order::where('user_id',Auth::user()->id)->get();
 
-        return view('user.main.home', compact('pizza', 'category', 'cartdetail'));
+        return view('user.main.home', compact('pizza', 'category', 'cartdetail','history'));
     }
 
     // user change page
@@ -58,6 +60,13 @@ class UserController extends Controller
         return view('user.info.detail');
     }
 
+    // history 
+    public function history()
+    {
+        $order = Order::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->paginate(5);
+        return view('user.main.history',compact('order'));
+    }
+
     // pizza detial
     public function pizzaDetail($pizzaId)
     {
@@ -72,7 +81,8 @@ class UserController extends Controller
         $pizza = Product::where('category_id', $category_id)->orderBy('created_at', 'desc')->get();
         $category = Category::get();
         $cartdetail = Cart::where('user_id', Auth::user()->id)->get();
-        return view('user.main.home', compact('pizza', 'category','cartdetail'));
+        $history = Order::where('user_id',Auth::user()->id)->get();
+        return view('user.main.home', compact('pizza', 'category', 'cartdetail','history'));
     }
 
     //addCart

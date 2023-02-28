@@ -9,6 +9,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\ajaxController;
 use App\Http\Controllers\User\UserController;
+use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use GuzzleHttp\Handler\Proxy;
@@ -79,16 +80,19 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/userhome', [UserController::class, 'homePage'])->name('user#home');
         Route::get('filder/{id}', [UserController::class, 'filter'])->name('user#filter');
 
-      
+
 
         // pizza detail
         Route::prefix('pizza')->group(function () {
             Route::get('detail/{id}', [UserController::class, 'pizzaDetail'])->name('user#pizzaDetail');
         });
 
+
+
         // cart
         Route::prefix('cart')->group(function () {
             Route::get('pizzaCart', [UserController::class, 'pizzaCart'])->name('cart#pizzaCart');
+            Route::get('history', [UserController::class, 'history'])->name('cart#history');
         });
 
 
@@ -104,11 +108,14 @@ Route::middleware(['auth'])->group(function () {
             Route::get('detail', [UserController::class, "detail"])->name('user#accountDetail');
             Route::post('changeAccount/{id}', [UserController::class, 'changeAccount'])->name('user#changeAccount');
         });
-          // ajax pizza list
-          Route::prefix('ajax')->group(function () {
+
+        // ajax pizza list
+        Route::prefix('ajax')->group(function () {
             Route::get('pizza', [ajaxController::class, 'pizzaList'])->name('ajax#pizzaList');
             Route::get('addToCart', [ajaxController::class, 'addToCart'])->name('ajax#addToCart');
-            Route::get('order',[ajaxController::class,'order'])->name('ajax#order');
+            Route::get('order', [ajaxController::class, 'order'])->name('ajax#order');
+            Route::get('clear/cart', [ajaxController::class, 'clear'])->name('ajax#clear');
+            Route::get('crossbtn', [ajaxController::class, 'crossbtn'])->name('ajax#crossbtn');
         });
     });
 });

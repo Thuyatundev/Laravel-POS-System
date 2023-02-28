@@ -42,13 +42,21 @@
                     <div class="col-12 pb-1">
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div>
-                               <a href="{{route('cart#pizzaCart')}}">
+                               <a href="{{route('cart#pizzaCart')}}" class="me-2 text-decoration-none">
                                 <button type="button" class="btn btn-dark position-relative"><i class="fa-solid fa-cart-plus text-white fs-4"> </i>
                                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
                                    {{count($cartdetail)}} 
                                     </span>
                                   </button>
                                 </a>
+
+                                <a href="{{route('cart#history')}}" class="text-decoration-none">
+                                    <button type="button" class="btn btn-dark position-relative"><i class="fa-solid fa-clock-rotate-left"></i> History
+                                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                       {{count($history)}} 
+                                        </span>
+                                      </button>
+                                    </a>
                             </div>
                             <div class="ml-2">
                                 <div class="btn-group">
@@ -60,7 +68,7 @@
                                 </div>
                                 </div>
                                 </div>
-                         </div>
+                            </div>
                     
                         <span class="row" id="dataList">
                         @if (count($pizza) != 0)

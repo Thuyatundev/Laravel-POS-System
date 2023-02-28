@@ -29,6 +29,7 @@
                             <td><img src="{{asset('storage/'. $c->pizzaImage)}}" alt="" style="width: 100px;height:70px;" class="img-thumbnail"></td>
                             <td class="align-middle">
                                 {{$c->pizzaName}}
+                                <input type="hidden" class="orderId" value="{{$c->id}}">
                                 <input type="hidden" class="productId" value="{{$c->product_id}}">
                                 <input type="hidden" class="userId" value="{{$c->user_id}}">
                             </td>
@@ -75,7 +76,8 @@
                             <h5>Total Amount <i class="fa-solid fa-sack-dollar"></i></h5>
                             <h5 class="text-danger" id="finalPrice">{{$totalPrice+2500}} MMK</h5>
                         </div>
-                        <button class="btn btn-block btn-dark font-weight-bold my-3 py-3" id="btnPlus">Proceed To Checkout</button>
+                        <button class="btn btn-block btn-dark font-weight-bold my-3 py-3" id="btnPlus">Order</button>
+                        <button class="btn btn-block btn-danger font-weight-bold my-3 py-3" id="clearbtn"> Remove All </button>
                     </div>
                 </div>
             </div>
@@ -114,8 +116,17 @@
                 // when cross button click
                 $('.btnRemove').click(function(){
                     $parentNode = $(this).parents('tr');
-                    $parentNode.remove();
+                    $productId = $parentNode.find('.productId').val();
+                    $orderId = $parentNode.find('.orderId').val();
 
+                    $.ajax({
+                        type: 'get',
+                        url: 'http://localhost:8000/User/ajax/crossbtn',
+                        data : {'productId' : $productId , 'orderId': $orderId},
+                        dataType: 'json',
+                    })
+
+                    $parentNode.remove();
                     summaryCalculation();
                 })
 
@@ -132,12 +143,12 @@
                 }
             });
 
-            // Proceed to checkout
+            // order
             $("#btnPlus").click(function(){
     
                     $orderList = [];
 
-                    $random = Math.floor(Math.random() * 10000001);
+                    $random = Math.floor(Math.random() * 10000000001);
 
                    
 
@@ -150,9 +161,8 @@
                             'order_code' : 'POS'+ $random + 'CODE'
                         });
                     });
-         
-
-            $.ajax({
+        
+                    $.ajax({
                     type : 'get',
                     url  :  'http://localhost:8000/User/ajax/order',
                     data :  Object.assign({}, $orderList),
@@ -162,11 +172,22 @@
                             window.location.href = 'http://127.0.0.1:8000/User/userhome';
                         }
                     }
-
-
-
-            });
-        });
+                    });
+                });
             
+            // Remove All
+            $('#clearbtn').click(function(){
+                $.ajax({
+                    type : 'get',
+                    url : 'http://localhost:8000/User/ajax/clear/cart',
+                    dataType : 'json',
+                })
+
+                $('#dataTable tbody tr').remove();
+                $('#subTotalPrice').html('0 MMK');
+                $('#finalPrice').html('3000 MMK');
+
+            })
+
         </script>
 @endsection
