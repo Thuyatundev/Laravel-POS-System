@@ -60,6 +60,11 @@
                                 <i class="fa-solid fa-utensils"></i> Products
                             </a>
                         </li>
+                        <li>
+                            <a class="text-decoration-none" href="{{route('order#list')}}">
+                                <i class="fa-solid fa-arrow-down-wide-short"></i> Orders
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>
@@ -230,8 +235,12 @@
     {{-- bootstrap link --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
    
-    
+    {{-- jquery link --}}
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+   
 </body>
+
+@yield('scriptSource')
 
 </html>
 <!-- end document-->

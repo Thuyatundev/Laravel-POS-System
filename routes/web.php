@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\User\ajaxController;
 use App\Http\Controllers\User\UserController;
@@ -71,6 +72,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('detail/{id}', [ProductController::class, 'detail'])->name('product#detail');
             Route::get('edit/{id}', [ProductController::class, 'edit'])->name('product#edit');
             Route::post('update', [ProductController::class, 'update'])->name('product#update');
+        });
+
+        // Order Route
+        Route::group(['prefix' => 'order'], function () {
+            // products
+            Route::get('list', [OrderController::class, 'orderlist'])->name('order#list');
+            Route::get('ajax/status',[OrderController::class, 'orderStatus'])->name('order#ajax');
         });
     });
 

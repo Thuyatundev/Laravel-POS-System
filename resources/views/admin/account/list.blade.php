@@ -99,12 +99,12 @@
                                     <img src="{{asset('storage/'.$a->image)}}" style="width: 250px;height:170px;"    class="img-thumbnail shadow-sm" alt="pic">  
                                     @endif
                                 </td>
-                                <td class="col-1">{{$a->email}}</td>
-                                <td class="col-1">{{$a->name}}</td>
-                                <td class="col-1">{{$a->phone}}</td>
-                                <td class="col-1">{{$a->gender}}</td>
-                                <td class="col-1">{{$a->address}}</td>
-                                <td class="col-1">
+                                <td class="">{{$a->email}}</td>
+                                <td class="">{{$a->name}}</td>
+                                <td class="">{{$a->phone}}</td>
+                                <td class="">{{$a->gender}}</td>
+                                <td class="">{{$a->address}}</td>
+                                <td class="">
                                     <div class="table-data-feature">       
                                         @if (Auth::user()->id == $a->id)
                                         <a href="#">
