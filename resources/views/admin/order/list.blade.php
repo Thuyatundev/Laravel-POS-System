@@ -62,17 +62,19 @@
                         <tbody id="dataList">
                             @foreach ($order as $o)
                             <tr class="tr-shadow">
+                                <input type="hidden" class="orderId" value="{{$o->id}}">
                                 <td class="">{{$o->user_id}}</td>
                                 <td class="">{{$o->user_name}}</td>
                                 <td class="">{{$o->created_at->format('j-M-Y')}}</td>
                                 <td class="">{{$o->order_code}}</td>
                                 <td class="">{{$o->total_price}} MMK</td>
                                 <td class="">
-                                    <select name="status"  @if($o->status == 0 ) class="form-control text-center bg-dark text-warning" @elseif ($o->status == 1) class="form-control text-center bg-dark text-success" @elseif($o->status == 2) class="form-control text-center bg-dark text-danger"@endif >
+                                    <select name="status"  @if($o->status == 0 ) class="form-control statusChange text-center bg-dark text-warning " @elseif ($o->status == 1) class="form-control statusChange text-center bg-dark text-success" @elseif($o->status == 2) class="form-control statusChange text-center bg-dark text-danger"@endif >
                                         <option value="0" @if ($o->status == 0) selected @endif>Pending</option>
                                         <option value="1" @if ($o->status == 1) selected @endif>Accept</option>
                                         <option value="2" @if ($o->status == 2) selected @endif>Reject</option>
                                     </select>
+                                </td>
                             </tr>
                             @endforeach
                     
@@ -106,25 +108,70 @@
                 success : function(response){
                         $list = '';
                         for ($i=0; $i<response.length; $i++) {
+
+                            // date change
+                            $months =['January','February','March','April','May','June','July','August','September','October','November','December'];
+                            $dbDate = new Date(response[$i].created_at);
+                            $finalDate =$months[$dbDate.getMonth()]  +'-'+ $dbDate.getDate()  +'-'+ $dbDate.getFullYear();
+
+                            if (response[$i].status == 0) {
+                                $statusMessage = `
+                                <select name="status"  @if($o->status == 0 ) class="form-control statusChange text-center bg-dark text-warning" @elseif ($o->status == 1) class="form-control text-center bg-dark text-success" @elseif($o->status == 2) class="form-control text-center bg-dark text-danger"@endif >
+                                        <option value="0" selected>Pending</option>
+                                        <option value="1" >Accept</option>
+                                        <option value="2" >Reject</option>
+                                    </select>
+                                `;
+                            }else if(response[$i].status == 1){
+                                $statusMessage = `
+                                <select name="status"  @if($o->status == 0 ) class="form-control statusChange text-center bg-dark text-warning" @elseif ($o->status == 1) class="form-control text-center bg-dark text-success" @elseif($o->status == 2) class="form-control text-center bg-dark text-danger"@endif >
+                                        <option value="0" >Pending</option>
+                                        <option value="1" selected>Accept</option>
+                                        <option value="2" >Reject</option>
+                                    </select>
+                                `;
+                            }else if(response[$i].status == 2){
+
+                            $statusMessage = `
+                            <select name="status"  @if($o->status == 0 ) class="form-control statusChange text-center bg-dark text-warning" @elseif ($o->status == 1) class="form-control text-center bg-dark text-success" @elseif($o->status == 2) class="form-control text-center bg-dark text-danger"@endif >
+                                        <option value="0" >Pending</option>
+                                        <option value="1" >Accept</option>
+                                        <option value="2" selected>Reject</option>
+                                    </select>
+                            `;
+                        }
                             
                           $list += ` <tr class="tr-shadow">
+                                <input type="hidden" class="orderId" value="${response[$i].id}">
                                 <td class="">${response[$i].user_id}</td>
                                 <td class="">${response[$i].user_name}</td>
-                                <td class="">${response[$i].created_at}</td>
+                                <td class="">${$finalDate}</td>
                                 <td class="">${response[$i].order_code}</td>
                                 <td class="">${response[$i].total_price}</td>
-                                <td class="">
-                                    <select name="status"  @if($o->status == 0 ) class="form-control text-center bg-dark text-warning" @elseif ($o->status == 1) class="form-control text-center bg-dark text-success" @elseif($o->status == 2) class="form-control text-center bg-dark text-danger"@endif >
-                                        <option value="0" ${response[$i].status}>Pending</option>
-                                        <option value="1" ${response[$i].status}>Accept</option>
-                                        <option value="2" ${response[$i].status}>Reject</option>
-                                    </select>
+                                <td class="">${$statusMessage}</td>
                             </tr>`;
                         }
                         $('#dataList').html($list);
                     }
-            })
-        
+                })
+        })
+
+        $('.statusChange').change(function () {
+               $currentStatus = $(this).val();
+               $parentNode = $(this).parents('tr');
+               $orderId = $parentNode.find('.orderId').val(); 
+
+               $data = {
+                    'status' :$currentStatus,
+                    'orderId' :$orderId
+                }; 
+
+               $.ajax({
+                type : 'get',
+                url : 'http://localhost:8000/order/ajax/change/status',
+                data : $data,
+                dataType: 'json',
+            });
         })
     })
 </script>

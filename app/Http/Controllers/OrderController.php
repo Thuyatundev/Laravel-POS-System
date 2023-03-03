@@ -30,4 +30,13 @@ class OrderController extends Controller
                 }
                 return response()->json($order,200);
     }
+
+    // ajaxChangeStatus
+    public function ajaxChangeStatus(Request $request)
+    {
+        Order::where('id',$request->orderId)->update([
+            'status' =>$request->status
+        ]);
+    }
+
 }
