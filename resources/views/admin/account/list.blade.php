@@ -16,16 +16,6 @@
 
                             </div>
                         </div>
-                        <div class="table-data__tool-right">
-                            <a href=" {{route('category#createPage')}}">
-                            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                <i class="zmdi zmdi-plus"></i>add category
-                            </button> 
-                             </a> 
-                            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                CSV download
-                            </button>  
-                        </div>
                     </div>
                     @if (session('createSuccess'))
                     <div class="col-4 offset-8">

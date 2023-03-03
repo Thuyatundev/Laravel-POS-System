@@ -78,7 +78,7 @@ Route::middleware(['auth'])->group(function () {
         Route::group(['prefix' => 'order'], function () {
             // products
             Route::get('list', [OrderController::class, 'orderlist'])->name('order#list');
-            Route::get('ajax/status',[OrderController::class, 'orderStatus'])->name('order#ajax');
+            Route::get('change/status',[OrderController::class, 'changeStatus'])->name('order#changeStatus');
             Route::get('ajax/change/status',[OrderController::class, 'ajaxChangeStatus'])->name('order#ajaxchangestatus');
         });
     });
