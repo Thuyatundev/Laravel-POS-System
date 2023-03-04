@@ -52,7 +52,9 @@
                                 <td class="">{{$o->user_id}}</td>
                                 <td class="">{{$o->user_name}}</td>
                                 <td class="">{{$o->created_at->format('j-M-Y')}}</td>
-                                <td class="">{{$o->order_code}}</td>
+                               <td>
+                                <a href="{{route('order#listInfo',$o->order_code)}}" class="text-decoration-none">{{$o->order_code}}</a>
+                               </td>
                                 <td class="">{{$o->total_price}} MMK</td>
                                 <td class="">
                                     <select name="status"  @if($o->status == 0 ) class="form-control statusChange text-center bg-dark text-warning " @elseif ($o->status == 1) class="form-control statusChange text-center bg-dark text-success" @elseif($o->status == 2) class="form-control statusChange text-center bg-dark text-danger"@endif >

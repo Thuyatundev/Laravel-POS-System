@@ -80,6 +80,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('list', [OrderController::class, 'orderlist'])->name('order#list');
             Route::get('change/status',[OrderController::class, 'changeStatus'])->name('order#changeStatus');
             Route::get('ajax/change/status',[OrderController::class, 'ajaxChangeStatus'])->name('order#ajaxchangestatus');
+            Route::get('listInfo/{orderCode}',[OrderController::class,'listInfo'])->name('order#listInfo');
         });
     });
 
