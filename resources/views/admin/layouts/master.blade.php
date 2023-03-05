@@ -65,6 +65,11 @@
                                 <i class="fa-solid fa-arrow-down-wide-short"></i> Orders
                             </a>
                         </li>
+                        <li>
+                            <a class="text-decoration-none" href="{{route('user#list')}}">
+                                <i class="fa-solid fa-users-gear"></i> UserLists
+                            </a>
+                        </li>
                     </ul>
                 </nav>
             </div>

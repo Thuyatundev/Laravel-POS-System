@@ -129,6 +129,29 @@ class UserController extends Controller
     }
 
 
+    // admin->userlist
+    public function userList()
+    {
+        $users = User::where('role','user')->paginate(3);
+        return view('admin.user.list',compact('users'));
+    }
+
+    // admin->changerole
+    public function userchangeRole(Request $request)
+    {
+        $updateData = [
+            'role' =>$request->role
+        ];
+        User::where('id',$request->userId)->update( $updateData);
+    }
+
+    // admin->user->delete
+    public function delete($id)
+    {
+        User::where('id', $id)->delete();
+        return back();
+    }
+
     // userdata
     private function getUserData($request)
     {

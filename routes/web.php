@@ -82,6 +82,13 @@ Route::middleware(['auth'])->group(function () {
             Route::get('ajax/change/status',[OrderController::class, 'ajaxChangeStatus'])->name('order#ajaxchangestatus');
             Route::get('listInfo/{orderCode}',[OrderController::class,'listInfo'])->name('order#listInfo');
         });
+
+        // userList
+        Route::group(['prefix' => 'user'], function () {
+            Route::get('list', [UserController::class, 'userList'])->name('user#list');
+            Route::get('change/role',[UserController::class,'userchangeRole'])->name('admin#userchangeRole');
+            Route::get('delete/{id}',[UserController::class,'delete'])->name('admin#userdelete');
+        });
     });
 
     //user page
@@ -126,6 +133,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('order', [ajaxController::class, 'order'])->name('ajax#order');
             Route::get('clear/cart', [ajaxController::class, 'clear'])->name('ajax#clear');
             Route::get('crossbtn', [ajaxController::class, 'crossbtn'])->name('ajax#crossbtn');
+           
         });
     });
 });
