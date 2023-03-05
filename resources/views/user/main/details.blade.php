@@ -21,14 +21,7 @@
                 <div class="h-100 bg-light p-30">
                     <h3>{{$pizzaList->name}}</h3>
                     <div class="d-flex mb-3">
-                        {{-- <div class="text-primary mr-2">
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star"></small>
-                            <small class="fas fa-star-half-alt"></small>
-                            <small class="far fa-star"></small>
-                        </div> --}}
-                        <small class="pt-1">{{$pizzaList->view_count}} <i class="fa-solid fa-eye"></i></small>
+                        <small class="pt-1">{{$pizzaList->view_count + 1}} <i class="fa-solid fa-eye"></i></small>
                     </div>
                     <h3 class="font-weight-semi-bold mb-4">{{$pizzaList->price}} MMK</h3>
                     <p class="mb-4 text-muted">{{$pizzaList->description}}</p>
@@ -131,6 +124,16 @@
 @section('scriptSource')
     <script>
         $(document).ready(function () {
+
+            // increase pizza view count
+            $.ajax({
+                    type : 'get',
+                    url: 'http://127.0.0.1:8000/User/ajax/increase/viewCount',
+                    data: { 'productId' : $('#pizzaId').val()},
+                    dataType:'json',
+                });
+
+            // click add to cart btn
             $('#addCartBtn').click(function(){
                 $source = {
                     'userId' : $('#userId').val(),

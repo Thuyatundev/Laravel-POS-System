@@ -10,14 +10,23 @@
                 <div class="col-md-12">
                     <!-- DATA TABLE -->
                     <div class="table-data__tool">
+                       
                         <div class="table-data__tool-left">
                             <div class="overview-wrap">
                                 <h2 class="title-1 text-dark"><i class="fa-solid fa-user-group"></i> User Account List : <span class="text-danger"> {{$users->total()}}   </span></h2>
-
                             </div>
+                            
                         </div>
                     </div>
                    <div class="table-responsive table-responsive-data2">
+                    @if (session('deletesuccess'))
+                    <div class="col-4 offset-8">
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <i class="fa-solid fa-circle-xmark"></i> {{session('deletesuccess')}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                          </div>
+                    </div>
+                    @endif
                     <table class="table table-data2 text-center">
                         <thead>
                             <tr>
@@ -51,17 +60,16 @@
                             <td>{{$u->phone}}</td>
                             <td>{{$u->address}}</td>
                             <td>
-                                <select name="role" class="form-control rounded-pill bg-success text-white text-center statusChange">
-                                    
+                                <select name="role" class="form-control rounded-pill text-center statusChange">
                                     <option value="admin" @if ($u->role == 'admin') selected  @endif >Admin</option>
                                     <option value="user"  @if ($u->role == 'user') selected  @endif >User</option>
                                 </select>
                             </td>
                             <td>
-                                <div class="p-1 border rounded-pill bg-danger text-white">
+                                <div class="p-1 border rounded-pill">
                                     <a href="{{route('admin#userdelete', $u->id)}}">
-                                    <button class="item text-white" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure?')" >
-                                    <i class="fa-solid fa-trash-can text-white"></i> Delete
+                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure?')" >
+                                    <i class="fa-solid fa-trash-can "></i> Delete
                                     </button>
                                     </a>
                                 </div> 

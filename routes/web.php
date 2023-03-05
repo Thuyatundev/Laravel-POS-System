@@ -1,20 +1,21 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Models\Cart;
+use App\Models\Product;
+use App\Models\Category;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+use PHPUnit\TextUI\XmlConfiguration\Group;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\User\ajaxController;
 use App\Http\Controllers\User\UserController;
-use App\Models\Cart;
-use App\Models\Category;
-use App\Models\Product;
-use GuzzleHttp\Handler\Proxy;
-use PHPUnit\TextUI\XmlConfiguration\Group;
 use Symfony\Component\HttpKernel\DataCollector\AjaxDataCollector;
 
 Route::middleware('admin_auth')->group(function () {
@@ -89,8 +90,17 @@ Route::middleware(['auth'])->group(function () {
             Route::get('change/role',[UserController::class,'userchangeRole'])->name('admin#userchangeRole');
             Route::get('delete/{id}',[UserController::class,'delete'])->name('admin#userdelete');
         });
+
+        // admincontact
+        Route::group(['prefix'=> 'contact'],function(){
+            Route::get('list',[ContactController::class,'contactList'])->name('admin#contactlist');
+            Route::get('detail/{id}',[ContactController::class,'detail'])->name('admin#detail');
+            Route::get('delete/{id}',[ContactController::class,'delete'])->name('admin#delete');
+        });
     });
 
+
+    // User Route
     //user page
     Route::group(['prefix' => 'User', 'middleware' => 'user_auth'], function () {
 
@@ -104,6 +114,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('detail/{id}', [UserController::class, 'pizzaDetail'])->name('user#pizzaDetail');
         });
 
+        // contact Route
+        Route::prefix('contact')->group(function () {
+            Route::get('show/contact', [ContactController::class, 'show'])->name('contact#show');
+            Route::post('store',[ContactController::class, 'store'])->name('contact#store');
+        });
 
 
         // cart
@@ -133,7 +148,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('order', [ajaxController::class, 'order'])->name('ajax#order');
             Route::get('clear/cart', [ajaxController::class, 'clear'])->name('ajax#clear');
             Route::get('crossbtn', [ajaxController::class, 'crossbtn'])->name('ajax#crossbtn');
-           
+            Route::get('increase/viewCount', [ajaxController::class, 'increaseViewCount'])->name('ajax#increaseViewCount');
         });
     });
 });

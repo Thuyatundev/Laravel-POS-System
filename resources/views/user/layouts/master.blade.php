@@ -48,14 +48,11 @@
                             <a href="{{route('user#home')}}" class="nav-item nav-link fs-4">Home</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0 d-none d-lg-block">
-                            {{-- <a href="" class="btn px-0">
-                                <i class="fas fa-heart text-dark"></i>
-                                <span class="badge text-white border border-white rounded-circle" style="padding-bottom: 2px;">0</span>
+                            <a href="{{route('contact#show')}}" class="me-2 text-decoration-none">
+                            <button type="button" class="btn btn-dark position-relative"><i class="fa-regular fa-comment-dots"></i>
+                            </button>
                             </a>
-                            <a href="" class="btn px-0 ml-3">
-                                <i class="fas fa-shopping-cart text-dark"></i>
-                                <span class="badge text-white border border-white rounded-circle" style="padding-bottom: 2px;">0</span>
-                            </a> --}}
+                
                             
                             <div class="dropdown d-inline me-5 p-2 bg-danger ">
                                 <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">

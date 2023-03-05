@@ -23,9 +23,9 @@ class UserController extends Controller
         $pizza = Product::orderBy('created_at', 'desc')->get();
         $category = Category::get();
         $cartdetail = Cart::where('user_id', Auth::user()->id)->get();
-        $history = Order::where('user_id',Auth::user()->id)->get();
+        $history = Order::where('user_id', Auth::user()->id)->get();
 
-        return view('user.main.home', compact('pizza', 'category', 'cartdetail','history'));
+        return view('user.main.home', compact('pizza', 'category', 'cartdetail', 'history'));
     }
 
     // user change page
@@ -63,8 +63,8 @@ class UserController extends Controller
     // history 
     public function history()
     {
-        $order = Order::where('user_id',Auth::user()->id)->orderBy('created_at','desc')->paginate(5);
-        return view('user.main.history',compact('order'));
+        $order = Order::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
+        return view('user.main.history', compact('order'));
     }
 
     // pizza detial
@@ -81,8 +81,8 @@ class UserController extends Controller
         $pizza = Product::where('category_id', $category_id)->orderBy('created_at', 'desc')->get();
         $category = Category::get();
         $cartdetail = Cart::where('user_id', Auth::user()->id)->get();
-        $history = Order::where('user_id',Auth::user()->id)->get();
-        return view('user.main.home', compact('pizza', 'category', 'cartdetail','history'));
+        $history = Order::where('user_id', Auth::user()->id)->get();
+        return view('user.main.home', compact('pizza', 'category', 'cartdetail', 'history'));
     }
 
     //addCart
@@ -132,24 +132,24 @@ class UserController extends Controller
     // admin->userlist
     public function userList()
     {
-        $users = User::where('role','user')->paginate(3);
-        return view('admin.user.list',compact('users'));
+        $users = User::where('role', 'user')->paginate(3);
+        return view('admin.user.list', compact('users'));
     }
 
     // admin->changerole
     public function userchangeRole(Request $request)
     {
         $updateData = [
-            'role' =>$request->role
+            'role' => $request->role
         ];
-        User::where('id',$request->userId)->update( $updateData);
+        User::where('id', $request->userId)->update($updateData);
     }
 
     // admin->user->delete
     public function delete($id)
     {
         User::where('id', $id)->delete();
-        return back();
+        return back()->with('deletesuccess', 'User has been deleted successfully...');
     }
 
     // userdata

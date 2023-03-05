@@ -160,8 +160,8 @@
                 url : 'http://localhost:8000/order/ajax/change/status',
                 data : $data,
                 dataType: 'json',
-                
             });
+            location.reload();
         })
     })
 </script>
