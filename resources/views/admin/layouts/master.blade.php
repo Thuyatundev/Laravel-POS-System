@@ -70,11 +70,11 @@
                                 <i class="fa-solid fa-users-gear"></i> UserLists
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a class="text-decoration-none" href="{{route('admin#contactlist')}}">
-                                <i class="fa-solid fa-comment-dots"></i> Contact Message
+                                {{$messages->total()}} <i class="fa-solid fa-comment-dots"></i> Message 
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </nav>
             </div>
@@ -98,9 +98,9 @@
                                 </button>
                             </form> --}}
                             <div class="header-button">
-                                {{-- <div class="noti-wrap">
+                                <div class="noti-wrap">
                                     <div class="noti__item js-item-menu">
-                                       
+                                        <i class="fa-solid fa-comment-dots"></i>
                                         <span class="quantity"></span>
                                         <div class="notifi-dropdown js-dropdown">
                                             <div class="notifi__footer">
@@ -108,7 +108,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> --}}
+                                </div>
                                 <div class="account-wrap">
                                     <div class="account-item clearfix js-item-menu">
                                         <div class="image">

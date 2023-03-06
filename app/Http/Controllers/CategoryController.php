@@ -6,8 +6,10 @@ namespace App\Http\Controllers;
 
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Contact;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
@@ -19,8 +21,9 @@ class CategoryController extends Controller
             $query->where('name', 'like', '%' . request('key') . '%');
         })->orderBy('created_at', 'desc')
             ->paginate(6);
+            $contact = Contact::where('user_id', Auth::user()->id)->get();
         $categories->appends(request()->all());
-        return view('admin.category.list', compact('categories'));
+        return view('admin.category.list', compact('categories','contact'));
     }
 
     //category createpage

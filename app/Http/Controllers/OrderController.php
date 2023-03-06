@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Contact;
 use App\Models\orderList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
     // order list 
     public function orderlist()
     {
+        $contact = Contact::where('user_id', Auth::user()->id)->get();
         $order = Order::select('orders.*', 'users.name as user_name')
             ->leftJoin('users', 'users.id', 'orders.user_id')
             ->get();
-        return view('admin.order.list', compact('order'));
+        return view('admin.order.list', compact('order','contact'));
     }
 
     // orderStatus

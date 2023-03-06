@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Cache\Store;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -14,12 +16,13 @@ class ProductController extends Controller
     // product list
     public function createPage()
     {
+        $contact = Contact::where('user_id', Auth::user()->id)->get();
         $pizzas = Product::select('products.*', 'categories.name as category_name')->when(request('key'), function ($query) {
                 $query->where('products.name', 'like', '%' . request('key') . '%');
             })->leftJoin('categories', 'products.category_id', 'categories.id')
             ->orderBy('created_at', 'desc')->paginate(4);
         $pizzas->appends(request()->all());
-        return view('admin.product.pizza', compact('pizzas'));
+        return view('admin.product.pizza', compact('pizzas','contact'));
     }
 
     // product list

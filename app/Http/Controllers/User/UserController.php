@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use App\Models\Cart;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Contact;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ class UserController extends Controller
         $category = Category::get();
         $cartdetail = Cart::where('user_id', Auth::user()->id)->get();
         $history = Order::where('user_id', Auth::user()->id)->get();
+        
 
         return view('user.main.home', compact('pizza', 'category', 'cartdetail', 'history'));
     }

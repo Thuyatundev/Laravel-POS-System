@@ -121,7 +121,7 @@
 
                     $.ajax({
                         type: 'get',
-                        url: 'http://localhost:8000/User/ajax/crossbtn',
+                        url: '/User/ajax/crossbtn',
                         data : {'productId' : $productId , 'orderId': $orderId},
                         dataType: 'json',
                     })
@@ -164,7 +164,7 @@
         
                     $.ajax({
                     type : 'get',
-                    url  :  'http://localhost:8000/User/ajax/order',
+                    url  :  '/User/ajax/order',
                     data :  Object.assign({}, $orderList),
                     dataType : 'json',
                     success : function(response){
@@ -179,13 +179,13 @@
             $('#clearbtn').click(function(){
                 $.ajax({
                     type : 'get',
-                    url : 'http://localhost:8000/User/ajax/clear/cart',
+                    url : '/User/ajax/clear/cart',
                     dataType : 'json',
                 })
 
                 $('#dataTable tbody tr').remove();
                 $('#subTotalPrice').html('0 MMK');
-                $('#finalPrice').html('3000 MMK');
+                $('#finalPrice').html('2500 MMK');
 
             })
 

@@ -17,14 +17,6 @@
                             </div>
                         </div>
                     </div>
-                    @if (session('productcreate'))
-                    <div class="col-4 offset-8">
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                            <i class="fa-sharp fa-solid fa-circle-check"></i> {{session('productcreate')}}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                          </div>
-                    </div>
-                    @endif
 
                     @if (session('deletesuccess'))
                     <div class="col-4 offset-8">
@@ -35,15 +27,8 @@
                     </div>
                     @endif
 
-                    @if (session('Productupdate'))
-                    <div class="col-4 offset-8">
-                        <div class="alert alert-info alert-dismissible fade show" role="alert">
-                            <i class="fa-regular fa-circle-check"></i> {{session('Productupdate')}}
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                          </div>
-                    </div>
-                    @endif
-                    </div>
+
+                </div>
                 @if (count($messages) != 0)
                    <div class="table-responsive table-responsive-data2">
                     <table class="table table-data2 text-center">

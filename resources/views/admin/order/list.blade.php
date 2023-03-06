@@ -157,7 +157,8 @@
 
                $.ajax({
                 type : 'get',
-                url : 'http://localhost:8000/order/ajax/change/status',
+                url : '/order/ajax/change/status',
+                contentType: "application/json",
                 data : $data,
                 dataType: 'json',
             });
