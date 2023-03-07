@@ -34,7 +34,7 @@
                                     <div class="col">
                                         <i class="fa-solid fa-envelope-circle-check"></i> <span>Email :</span><span class="my-3"> {{$message->user_email}}</span>
                                     </div>
-                                    <h3 class="my-3 fs-3"><i class="fa-solid fa-comment-sms"></i> {{$message->title}}</h3>
+                                    <h3 class="my-3 fs-3 text-danger"><i class="fa-solid fa-comment-sms"></i> {{$message->title}}</h3>
                                     <h4 class="my-3 text-muted"><i class="fa-solid fa-book-open"></i> {{$message->message}}</h4>
                                 </div>
                             </div>  
