@@ -6,6 +6,9 @@
 <div class="login-form">
     <form action="{{route('login')}}" method="post">
         @csrf
+        @error('terms')
+        <small class="text-danger">{{ $message }}</small>
+        @enderror
         <div class="form-group">
             <label>Email Address</label>
             <input class="au-input au-input--full" type="email" name="email"  placeholder="Email">

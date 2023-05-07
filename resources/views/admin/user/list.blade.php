@@ -33,16 +33,16 @@
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Gender</th>
+                                {{-- <th>Gender</th> --}}
                                 <th>Phone</th>
-                                <th>Address</th>
+                                {{-- <th>Address</th> --}}
                                 <th>Role</th>
                             </tr>
                         </thead>
                         <tbody id="dataList">
                            @foreach ($users as $u)
                            <tr>
-                            <td class="col-2 px-3">
+                            <td class="col-2 px-2">
                                  @if ( $u->image == null)
                                 @if ($u->gender == 'male')
                                 <img src="{{asset('admin/images/icon/user.png')}}" style="width: 250px;height:170px;"  class="img-thumbnail shadow-sm" alt="pic">
@@ -56,9 +56,9 @@
                             <input type="hidden" id="userId" value="{{$u->id}}">
                             <td>{{$u->name}}</td>
                             <td>{{$u->email}}</td>
-                            <td>{{$u->gender}}</td>
+                            {{-- <td>{{$u->gender}}</td> --}}
                             <td>{{$u->phone}}</td>
-                            <td>{{$u->address}}</td>
+                            {{-- <td>{{$u->address}}</td> --}}
                             <td>
                                 <select name="role" class="form-control rounded-pill text-center statusChange">
                                     <option value="admin" @if ($u->role == 'admin') selected  @endif >Admin</option>
@@ -69,7 +69,7 @@
                                 <div class="p-1 border rounded-pill">
                                     <a href="{{route('admin#userdelete', $u->id)}}">
                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" onclick="return confirm('Are you sure?')" >
-                                    <i class="fa-solid fa-trash-can "></i> Delete
+                                    <i class="fa-solid fa-trash-can "></i> Remove
                                     </button>
                                     </a>
                                 </div> 

@@ -64,7 +64,7 @@
         @enderror
 
         <div class="form-group">
-            <label>Password</label>
+            <label>Confirm Password</label>
             <input class="au-input au-input--full" type="password" name="password_confirmation" placeholder="Confirm Password">
         </div>
 
@@ -72,8 +72,7 @@
             <small class="text-danger">{{ $message }}</small>
         @enderror
         
-        <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>
-        
+        <button class="au-btn au-btn--block au-btn--green m-b-20" type="submit">register</button>     
     </form>
     <div class="register-link">
         <p>

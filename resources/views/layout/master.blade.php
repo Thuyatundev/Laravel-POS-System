@@ -35,15 +35,13 @@
 
      {{-- Font-awesome --}}
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 </head>
-
-<body class="animsition">
+<body class="animsition page-content--bge5">
     <div class="page-wrapper">
-        <div class="page-content--bge5">
+        <div class="">
             <div class="container">
                 <div class="login-wrap">
-                    <div class="login-content">
+                    <div class="login-content ">
                         <div class="login-logo">
                             <a href="#">
                                  <img src="{{asset('admin/images/icon/logo.png')}}" alt="CoolAdmin">
@@ -53,10 +51,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-
+        </div> 
     </div>
-
     <!-- Jquery JS-->
     <script src="{{asset('admin/vendor/jquery-3.2.1.min.js')}}"></script>
     <!-- Bootstrap JS-->

@@ -61,7 +61,7 @@ class RouteController extends Controller
     // create Contact API 
     // http://127.0.0.1:8000/api/create/contact(method = POST)
     // body{
-    // user_id : ''
+    // user_id : '' 
     // title
     // message
     // }
